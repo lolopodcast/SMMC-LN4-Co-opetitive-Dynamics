@@ -49,7 +49,7 @@ const dict = {
     analytics_name: "姓名", analytics_name_ph: "例：Jimmy Lo",
     analytics_export_csv: "匯出 CSV 歷程記錄",
     analytics_fill_required: "請填寫完整資訊以解鎖匯出",
-    group_options: ["G1","G2","G3","G4","G5","Others"],
+    group_options: ["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10","G11","G12","Others"],
     analytics_total_time: "總學習時間", analytics_total_clicks: "總互動點擊",
     analytics_overall_acc: "總體測驗答對率",
     analytics_module: "模組", analytics_time: "停留時間",
@@ -161,7 +161,7 @@ const dict = {
       { q: "競合策略（Co-opetition）的核心理念是什麼？", opts: ["商業即戰爭，只有競爭","商業關係同時包含競爭與合作","只需合作，避免競爭","競爭與合作互斥"], ans: 1, exp: "Brandenburger & Nalebuff 指出所有商業關係都兼具競爭與合作——合作創造價值，競爭分配價值。" },
       { q: "囚犯困境中，如何將均衡從「雙方背叛」推向「雙方合作」？", opts: ["增加參與者數量","將一次性賽局轉為重複賽局，或建立嚇阻機制","降低報酬","改變參與者身份"], ans: 1, exp: "重複賽局讓參與者認識到持續背叛的長期代價，嚇阻則透過報復威脅改變背叛的短期報酬。" },
       { q: "華航與長榮的競合關係最能體現哪一概念？", opts: ["純粹競爭","純粹合作","競合的雙重性","壟斷"], ans: 2, exp: "兩家在航線上直接競爭，但在產業政策、外部威脅應對上展現合作，完美體現競合雙重性。" },
-      { q: "PARTS 架構中的 A 代表什麼？", opts: ["行動（Action）","附加價值（Added Values）","聯盟（Alliance）","分析（Analysis）"], ans: 1, exp: "PARTS = Players（參與者）、Added Values（附加價值）、Rules（規則）、Tactics（戰術）、Scope（範圍）。" },
+      { q: "PARTS 架構中的 A 代表什麼？", opts: ["行動（Action）","附加價值（Added Values）","聯盟（Alliance）","分析（Analysis）"], ans: 1, exp: "PARTS = Players（參與者）、Added Values（附加價值）、Rules（規則）、Tactics（戰術）、範圍（Scope）。" },
       { q: "硬承諾在哪種競爭模式下對承諾方有利？", opts: ["價格競爭","產量競爭","品質競爭","服務競爭"], ans: 1, exp: "在產量競爭（Cournot 模型）中，一方增產會迫使對手減產，因此建新廠等硬承諾有利於承諾方。" },
       { q: "訊號傳遞（Signaling）在策略中的主要功能是什麼？", opts: ["降低成本","影響競爭對手的感知與反應","提升產品品質","增加市場份額"], ans: 1, exp: "訊號傳遞是選擇性地溝通資訊以影響對手的感知，進而誘發或抑制特定類型的競爭反應。" },
       { q: "Tesla 於 2014 年開放其專利的策略可用什麼賽局概念解釋？", opts: ["囚犯困境","改變賽局結構以創造雙贏","嚇阻策略","退出壁壘"], ans: 1, exp: "Tesla 犧牲部分獨占優勢以擴大電動車市場規模、推動自身技術成為業界標準——典型的改變賽局結構策略。" },
@@ -248,7 +248,7 @@ const dict = {
     analytics_name: "Name", analytics_name_ph: "e.g., Jimmy Lo",
     analytics_export_csv: "Export CSV Records",
     analytics_fill_required: "Complete all fields to unlock export",
-    group_options: ["G1","G2","G3","G4","G5","Others"],
+    group_options: ["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10","G11","G12","Others"],
     analytics_total_time: "Total Study Time", analytics_total_clicks: "Total Clicks",
     analytics_overall_acc: "Overall Quiz Accuracy",
     analytics_module: "Module", analytics_time: "Time Spent",
@@ -738,7 +738,7 @@ function App() {
         </div>
         <div className="mt-8"><h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4">{t.key_terms}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{t[`${mk}_terms`].map((term,i)=><FlipCard key={i} front={term.front} back={term.back} t={t}/>)}</div></div>
-        <ModuleQuiz questions={t[`${mk}_q`]} t={t} moduleId={num} onQuizSubmit={handleQuizSubmit}/>
+        <ModuleQuiz key={`quiz-${num}`} questions={t[`${mk}_q`]} t={t} moduleId={num} onQuizSubmit={handleQuizSubmit}/>
         {renderNavBottom()}
       </div>
     );
@@ -901,7 +901,7 @@ function App() {
               )}
             </div>
             <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <div className="font-serif font-black text-lg tracking-widest text-[#D8C3A5]">ICA</div>
+              <div className="font-serif font-black text-lg tracking-widest text-[#D8C3A5]">CD</div>
               <div className="hidden sm:block text-left"><h1 className="font-serif font-bold text-sm md:text-base leading-tight">{t.title}</h1><p className="text-[10px] text-[#D8C3A5]/70">{t.subtitle}</p></div>
             </button>
           </div>
@@ -934,7 +934,7 @@ function App() {
       <footer className="bg-[#004030] dark:bg-slate-950 text-slate-300 dark:text-slate-400 border-t border-[#D8C3A5]">
         <div className="max-w-7xl mx-auto px-4 h-8 flex justify-between items-center text-[10px] sm:text-xs">
           <div className="flex items-center space-x-2 md:space-x-4">
-            <div className="font-serif font-black text-[#D8C3A5] hidden sm:block tracking-widest text-sm">ICA</div>
+            <div className="font-serif font-black text-[#D8C3A5] hidden sm:block tracking-widest text-sm">CD</div>
             <span className="truncate">{t.copyright} · {t.date}</span>
           </div>
           <div className="flex items-center space-x-3 md:space-x-4">
