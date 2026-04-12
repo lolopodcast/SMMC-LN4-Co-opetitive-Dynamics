@@ -54,7 +54,7 @@ tailwind.config = {
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
-// 字典 (排除簡體，確保專業用語如: 總體, 策略, 架構, 構面)
+// 字典 (嚴格排除簡體與非商管用語，例如統一使用: 總體, 策略, 架構, 構面)
 const dict = {
   zh: {
     brand: "CD", title: "產業分析與競合動態", subtitle: "SMMC · 互動學習系列",
@@ -90,7 +90,7 @@ const dict = {
       { val: "PARTS", label: "賽局五要素" }, { val: "AMC", label: "競爭動態核心模型" }
     ],
     m0_modules: [
-      { num: "01", title: "五力架構的延伸與互補品", desc: "Porter 框架的限制、互補品作為第六力、平台競爭與贏家通吃效應" },
+      { num: "01", title: "五力架構的延伸與互補品", desc: "Porter 架構的限制、互補品作為第六力、平台競爭與贏家通吃效應" },
       { num: "02", title: "動態競爭與超級競爭", desc: "Schumpeter 創造性破壞、超級競爭、暫時性優勢與產業生命週期" },
       { num: "03", title: "賽局理論與競合策略", desc: "囚犯困境、嚇阻與承諾、PARTS 架構與改變賽局結構" },
       { num: "04", title: "競爭者分析與競爭動態", desc: "Porter 四構面分析、AMC 模型、市場共通性與資源相似性" },
@@ -100,31 +100,31 @@ const dict = {
 
     m1_nav: "1. 五力延伸與互補品", m1_title: "五力架構的延伸與互補品",
     m1_p1: "Porter 五力架構雖然是策略分析最廣泛運用的工具，但面臨兩大批評：理論基礎上，結構—行為—績效（S-C-P）範式的嚴謹性不及賽局理論；實證面上，產業因素僅能解釋不到 20% 的企業獲利差異，企業本身的資源與能力才是關鍵。",
-    m1_p2: "「互補品的存在增加了產品的價值：沒有墨水匣，印表機毫無用處。分析競爭環境時必須納入互補品——這是 Porter 框架中被遺漏的一股力量。」——Grant",
-    m1_p3: "Brandenburger 與 Nalebuff 提出「價值網」（Value Net）框架，將互補者加入分析：互補者的產品使你的產品更有價值，替代者則相反。在數位市場中，硬體、作業系統、應用軟體之間的互補關係創造了網路外部性，進而形成贏家通吃的市場格局。",
+    m1_p2: "「互補品的存在增加了產品的價值：沒有墨水匣，印表機毫無用處。分析競爭環境時必須納入互補品——這是 Porter 架構中被遺漏的一股力量。」——Grant",
+    m1_p3: "Brandenburger 與 Nalebuff 提出「價值網」（Value Net）架構，將互補者加入分析：互補者的產品使你的產品更有價值，替代者則相反。在數位市場中，硬體、作業系統、應用軟體之間的互補關係創造了網路外部性，進而形成贏家通吃的市場格局。",
     m1_cards: [
-      { title: "互補品的戰略邏輯", desc: "在你自己的產品中追求壟斷、差異化與稀缺供給；同時鼓勵互補品市場的競爭、同質化與產能過剩，藉此將價值從互補者轉移至己方。" },
+      { title: "互補品的策略邏輯", desc: "在你自己的產品中追求壟斷、差異化與稀缺供給；同時鼓勵互補品市場的競爭、同質化與產能過剩，藉此將價值從互補者轉移至己方。" },
       { title: "平台競爭與贏家通吃", desc: "在數位市場中，使用者與開發者傾向聚集於市占率領先的平台（網路外部性），形成強者愈強的循環。Android 從 2011 年的 37% 成長至 2014 年的 84% 即為典型案例。" }
     ],
     m1_case_title: "微個案：台積電 OIP 生態系——互補品價值共創的典範",
-    m1_case: "台積電於 2008 年建立開放創新平台（OIP），匯集 EDA 廠商、矽智財（IP）供應商、雲端服務商等互補者，形成半導體業最強大的設計生態系。OIP 的核心邏輯正是互補品的戰略運用：台積電透過開放製程參數，讓 EDA 工具針對其製程深度優化，使 IC 設計客戶「首次投片即成功」。這降低了客戶轉換至競爭對手（三星、Intel）的意願。台積電不與客戶競爭（純代工模式），卻透過掌控互補品生態的整合介面，成為整個價值鏈中不可替代的基礎。",
+    m1_case: "台積電於 2008 年建立開放創新平台（OIP），匯集 EDA 廠商、矽智財（IP）供應商、雲端服務商等互補者，形成半導體業最強大的設計生態系。OIP 的核心邏輯正是互補品的策略運用：台積電透過開放製程參數，讓 EDA 工具針對其製程深度優化，使 IC 設計客戶「首次投片即成功」。這降低了客戶轉換至競爭對手（三星、Intel）的意願。台積電不與客戶競爭（純代工模式），卻透過掌控互補品生態的整合介面，成為整個價值鏈中不可替代的基礎。",
     m1_case_lesson: "啟示：台積電的案例完美詮釋了互補品策略：在自身領域建立不可替代的地位，同時透過開放平台促進互補品市場的繁榮，使生態系價值回流至自身。",
     m1_terms: [
       { front: "互補品 (Complements)", back: "使另一產品價值增加的產品或服務。如 EDA 軟體之於晶圓代工。互補品的存在與品質直接影響核心產品的競爭力。" },
-      { front: "價值網 (Value Net)", back: "分析框架，將企業置於客戶、供應商、競爭者與互補者四方關係的中心，補充了 Porter 五力框架對互補關係的忽略。" },
+      { front: "價值網 (Value Net)", back: "分析架構，將企業置於客戶、供應商、競爭者與互補者四方關係的中心，補充了 Porter 五力架構對互補關係的忽略。" },
       { front: "網路外部性 (Network Externality)", back: "產品對使用者的價值隨使用者數量增加而提升的現象。在平台市場中造成正向回饋循環，促成贏家通吃格局。" },
       { front: "S-C-P 範式", back: "結構-行為-績效 (Structure-Conduct-Performance) 模型，認為產業結構決定企業行為，進而決定績效。五力分析的理論基礎。" }
     ],
     m1_q: [
       { q: "研究顯示，產業因素大約能解釋企業間獲利差異的多少比例？", opts: ["超過 50%","約 30-40%","不到 20%","約 80%"], ans: 2, exp: "實證研究指出，產業因素僅解釋不到 20% 的企業間報酬率變異。" },
-      { q: "在互補品策略中，企業應如何對待互補品市場？", opts: ["壟斷互補品市場","鼓勵互補品市場的競爭與同質化","忽略互補品","限制互補品供應"], ans: 1, exp: "戰略邏輯是：壟斷自己的產品，鼓勵互補品市場的競爭——讓價值流向控制瓶頸的一方。" },
-      { q: "價值網（Value Net）框架是由誰提出的？", opts: ["Michael Porter","Joseph Schumpeter","Brandenburger & Nalebuff","Clay Christensen"], ans: 2, exp: "Brandenburger 與 Nalebuff 提出價值網框架，補充了五力分析的不足。" },
+      { q: "在互補品策略中，企業應如何對待互補品市場？", opts: ["壟斷互補品市場","鼓勵互補品市場的競爭與同質化","忽略互補品","限制互補品供應"], ans: 1, exp: "策略邏輯是：壟斷自己的產品，鼓勵互補品市場的競爭——讓價值流向控制瓶頸的一方。" },
+      { q: "價值網（Value Net）架構是由誰提出的？", opts: ["Michael Porter","Joseph Schumpeter","Brandenburger & Nalebuff","Clay Christensen"], ans: 2, exp: "Brandenburger 與 Nalebuff 提出價值網架構，補充了五力分析的不足。" },
       { q: "台積電 OIP 生態系屬於哪種互補品策略？", opts: ["封閉整合策略","開放平台促進互補品競爭","價格戰策略","垂直整合策略"], ans: 1, exp: "台積電透過開放製程資訊，促進 EDA 等互補品供應商的競爭，使整體生態價值回流至自身。" }
     ],
-    m1_wrap: "傳統五力架構將產業視為靜態結構，但忽略了「互補品」帶來的價值共創力量。透過價值網與平台策略，企業能利用網路外部性建立難以跨越的護城河，正如台積電 OIP 生態系所展現的戰略佈局。",
+    m1_wrap: "傳統五力架構將產業視為靜態結構，但忽略了「互補品」帶來的價值共創力量。透過價值網與平台策略，企業能利用網路外部性建立難以跨越的護城河，正如台積電 OIP 生態系所展現的策略佈局。",
 
     m2_nav: "2. 動態競爭與超級競爭", m2_title: "動態競爭與超級競爭",
-    m2_p1: "Joseph Schumpeter 將競爭視為「創造性破壞的永恆風暴」：市場主導者不斷被對手的創新所挑戰甚至取代。這與 Porter 五力將產業結構視為穩定決定因素的觀點形成對比——如果結構變遷速度太快，五力框架就無法提供穩定的分析基礎。",
+    m2_p1: "Joseph Schumpeter 將競爭視為「創造性破壞的永恆風暴」：市場主導者不斷被對手的創新所挑戰甚至取代。這與 Porter 五力將產業結構視為穩定決定因素的觀點形成對比——如果結構變遷速度太快，五力架構就無法提供穩定的分析基礎。",
     m2_p2: "「激烈且快速的競爭行動中，競爭者必須迅速建立新優勢並侵蝕對手的優勢。」——Richard D'Aveni 論超級競爭",
     m2_p3: "D'Aveni 的超級競爭（Hypercompetition）概念與 Rita McGrath 的「暫時性優勢」（Transient Advantage）主張，競爭優勢不再持久，企業必須持續創造一系列短期優勢。然而，實證研究結果不一：部分研究確認美國製造業自 1950 年以來競爭波動性持續增加，但也有研究未發現市場普遍不穩定的證據。",
     m2_cards: [
@@ -149,7 +149,7 @@ const dict = {
     m2_wrap: "面對技術更迭與全球化的衝擊，靜態的優勢分析已不敷使用。理解創造性破壞的本質，並在產業生命週期的不同階段敏捷調整策略，創造「暫時性優勢組合」，是現代企業存活的關鍵。",
 
     m3_nav: "3. 賽局理論與競合策略", m3_title: "賽局理論與競合策略",
-    m3_p1: "賽局理論克服了五力框架將競爭視為結構決定的靜態缺陷，允許我們將競爭建模為參與者之間的互動決策過程。它提供了兩大貢獻：一是幫助框定策略決策（識別參與者、選項、報酬、決策順序）；二是預測競爭結果並識別最優策略選擇。",
+    m3_p1: "賽局理論克服了五力架構將競爭視為結構決定的靜態缺陷，允許我們將競爭建模為參與者之間的互動決策過程。它提供了兩大貢獻：一是幫助框定策略決策（識別參與者、選項、報酬、決策順序）；二是預測競爭結果並識別最優策略選擇。",
     m3_p2: "「所有商業關係都同時包含競爭與合作的元素。沒有純粹的競爭，也沒有純粹的合作。」——Brandenburger & Nalebuff 論競合策略",
     m3_p3: "賽局理論揭示了五種影響競爭結果的策略行為：合作（從零和走向正和）、嚇阻（施加代價）、承諾（消除自身退路）、改變賽局結構（創造雙贏）、以及訊號傳遞。PARTS 架構則將這些概念系統化為五個賽局要素：參與者（Players）、附加價值（Added Values）、規則（Rules）、戰術（Tactics）、範圍（Scope）。",
     m3_cards: [
@@ -163,7 +163,7 @@ const dict = {
       { front: "競合 (Co-opetition)", back: "Brandenburger & Nalebuff 提出：商業關係同時包含競爭與合作。應識別何時合作創造價值（把餅做大），何時競爭攫取價值（分餅）。" },
       { front: "囚犯困境 (Prisoners' Dilemma)", back: "經典模型：理性參與者追求個人最優時陷入集體次優結果。在商業中表現為價格戰等雙輸局面。" },
       { front: "承諾 (Commitment)", back: "策略性地限制自身未來選項以增強可信度。關鍵在於使承諾「不可逆轉」，消除退路讓對手相信你會貫徹到底。" },
-      { front: "PARTS 架構", back: "賽局分析框架：Players(參與者)、Added Values(附加價值)、Rules(規則)、Tactics(戰術)、Scope(範圍)。" }
+      { front: "PARTS 架構", back: "賽局分析架構：Players(參與者)、Added Values(附加價值)、Rules(規則)、Tactics(戰術)、Scope(範圍)。" }
     ],
     m3_q: [
       { q: "競合策略的核心理念是什麼？", opts: ["商業即戰爭，只有競爭","商業關係同時包含競爭與合作","只需合作，避免競爭","競爭與合作互斥"], ans: 1, exp: "Brandenburger & Nalebuff 指出合作創造價值，競爭分配價值。" },
@@ -174,18 +174,18 @@ const dict = {
     m3_wrap: "賽局理論教導我們，競爭不必然是零和遊戲。透過 PARTS 架構分析互動關係，企業可以藉由承諾、嚇阻與改變賽局規則，主動塑造更有利的競合環境。",
 
     m4_nav: "4. 競爭者分析與競爭動態", m4_title: "競爭者分析與競爭動態",
-    m4_p1: "在高度集中的產業中，企業的競爭環境主要由最近對手的行為所塑造。Porter 提出四構面競爭者分析框架：分析對手的現行策略、目標、產業假設、以及資源與能力，藉以預測其未來行為與對我方行動的反應。",
+    m4_p1: "在高度集中的產業中，企業的競爭環境主要由最近對手的行為所塑造。Porter 提出四構面競爭者分析架構：分析對手的現行策略、目標、產業假設、以及資源與能力，藉以預測其未來行為與對我方行動的反應。",
     m4_p2: "「偉大的將領——從漢尼拔到巴頓——的共同特質是能直接『進入對手指揮官的腦中思考』。」——Grant",
     m4_p3: "競爭動態的 AMC 模型從認知層面出發：競爭行為取決於覺察（Awareness）、動機（Motivation）、能力（Capability）。市場共通性（M/C）越高，多點接觸帶來的相互克制效應越強——發動攻擊的機率降低，但一旦被攻擊則回應機率上升。資源相似性（R/S）越高，越可能採取相似的策略模式。",
     m4_cards: [
-      { title: "Porter 四構面分析框架", desc: "（1）策略：對手如何競爭？（2）目標：追求市占或獲利？（3）假設：對產業的盲點？（4）資源與能力：強弱項？結合以預測對手行動。" },
+      { title: "Porter 四構面分析架構", desc: "（1）策略：對手如何競爭？（2）目標：追求市占或獲利？（3）假設：對產業的盲點？（4）資源與能力：強弱項？結合以預測對手行動。" },
       { title: "AMC 競爭動態模型", desc: "行動分為策略性（高承諾、難逆轉，如建新廠）與戰術性（如價格調整），兩者引發的回應程度不同。受市場共通性與資源相似性深刻影響。" }
     ],
     m4_case_title: "微個案：台灣便利商店雙雄的競爭動態",
     m4_case: "台灣便利商店密度極高，7-ELEVEN 與全家的競爭堪稱 AMC 活教材。市場共通性（M/C）：兩者在都會區幾乎完全重疊。資源相似性（R/S）：都背靠大型集團，擁有相似物流、鮮食廠、會員系統。競爭動態展現快速的行動—回應循環：全家推咖啡寄杯，7-11 隨即跟進；7-11 建構點數生態圈，全家以 App 媒體反攻。這種高 M/C 與高 R/S 的「軍備競賽」共同將超商轉型為「生活服務平台」，擴大了產業價值。",
     m4_case_lesson: "啟示：極高的覺察（密切監控）、強烈的動機（寸土必爭）、對等的能力（資源相當），形成快速的行動與回應循環，推動整個產業升級。",
     m4_terms: [
-      { front: "AMC 模型", back: "競爭動態核心框架：Awareness(覺察) × Motivation(動機) × Capability(能力)。決定企業是否發動競爭行動及如何回應。" },
+      { front: "AMC 模型", back: "競爭動態核心架構：Awareness(覺察) × Motivation(動機) × Capability(能力)。決定企業是否發動競爭行動及如何回應。" },
       { front: "市場共通性 (Market Commonality)", back: "兩家企業在市場上的重疊程度。共通性越高，多點接觸帶來的相互克制效應越強，但被攻擊時回應越激烈。" },
       { front: "資源相似性 (Resource Similarity)", back: "資源與能力的相似程度。相似性越高，越可能採取類似策略，回應能力也越強。" },
       { front: "相互克制 (Mutual Forbearance)", back: "當企業在多個市場遭遇時，會傾向避免全面價格戰，因擔心對方在其他核心市場報復。" }
@@ -196,7 +196,7 @@ const dict = {
       { q: "7-ELEVEN 與全家的競爭動態屬於哪種組合？", opts: ["高 M/C × 低 R/S","低 M/C × 高 R/S","高 M/C × 高 R/S","低 M/C × 低 R/S"], ans: 2, exp: "市場高度重疊且資源組成極為相似，形成最激烈的競爭動態。" },
       { q: "策略性行動與戰術性行動的主要差異是什麼？", opts: ["規模大小","承諾程度與可逆轉性","速度快慢","花費金額"], ans: 1, exp: "策略性行動（如建廠）高度承諾且難逆轉；戰術性行動（如調價）較靈活可逆。" }
     ],
-    m4_wrap: "競爭不是單向的攻擊，而是互動的對弈。透過 Porter 四構面與 AMC 模型，我們能夠洞察對手的決策邏輯，並預測他們對市場變化的反應速度與強度。",
+    m4_wrap: "競爭不是單向的攻擊，而是互動的對弈。透過 Porter 四構面分析架構與 AMC 模型，我們能夠洞察對手的決策邏輯，並預測他們對市場變化的反應速度與強度。",
 
     m5_nav: "5. 市場區隔與策略群組", m5_title: "市場區隔與策略群組",
     m5_p1: "要進行更精細的產業分析，必須將廣泛的產業拆解為更細緻的市場——這就是區隔分析。區隔的依據是客戶特性（人口統計、購買行為）與產品特性（價格、功能），目的是找出替代性限制最大的市場界線。",
@@ -399,7 +399,7 @@ const dict = {
   }
 };
 
-// SVG Assets & Icons restored from Original File
+// SVG Assets & Icons
 const IconMenu = ({size=24,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>;
 const IconX = ({size=24,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
 const IconPlay = ({size=24,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polygon points="5 3 19 12 5 21 5 3"/></svg>;
@@ -425,22 +425,21 @@ const IconBarChart2 = ({size=24,className=""})=><svg width={size} height={size} 
 const IconExternalLink = ({size=14,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>;
 
 /* =========================================================================================
-   SVGs For Modules - REDESIGNED FOR PERFECT READABILITY AT SMALL SCALES
-   Using 800x400 viewBox with significantly larger shapes and font sizes.
+   SVGs For Modules - Enhanced Readability
+   Using 800x440 viewBox to prevent cutoff and large text for scaled-down rendering.
    ========================================================================================= */
 const SvgHome = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
     <rect x="220" y="140" width="360" height="120" rx="15" className="fill-white dark:fill-slate-800 border-4" />
     <text x="400" y="208" textAnchor="middle" className="font-serif font-black text-3xl fill-current stroke-none">
       {lang === 'zh' ? '產業分析與競合動態' : 'Industry Analysis'}
     </text>
-    {/* Nodes */}
     <circle cx="120" cy="80" r="55" className="fill-white dark:fill-slate-800"/><text x="120" y="88" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '五力與互補' : '5+1 Forces'}</text>
     <circle cx="680" cy="80" r="55" className="fill-white dark:fill-slate-800"/><text x="680" y="88" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '動態競爭' : 'Dynamics'}</text>
     <circle cx="120" cy="320" r="55" className="fill-white dark:fill-slate-800"/><text x="120" y="328" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '賽局理論' : 'Game Theory'}</text>
     <circle cx="680" cy="320" r="55" className="fill-white dark:fill-slate-800"/><text x="680" y="328" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? 'AMC 模型' : 'AMC Model'}</text>
     <circle cx="400" cy="360" r="55" className="fill-white dark:fill-slate-800"/><text x="400" y="368" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '市場區隔' : 'Segments'}</text>
-    {/* Connections */}
+    
     <path d="M220 170 L170 110" strokeDasharray="6,6"/> <path d="M580 170 L630 110" strokeDasharray="6,6"/>
     <path d="M220 230 L170 290" strokeDasharray="6,6"/> <path d="M580 230 L630 290" strokeDasharray="6,6"/>
     <path d="M400 260 L400 305" strokeDasharray="6,6"/>
@@ -448,82 +447,82 @@ const SvgHome = ({ lang }) => (
 );
 
 const SvgM1 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
     <circle cx="400" cy="200" r="80" className="fill-slate-100 dark:fill-slate-800"/>
     <text x="400" y="208" textAnchor="middle" className="font-bold text-2xl fill-current stroke-none">{lang === 'zh' ? '同業競爭' : 'Rivalry'}</text>
     <rect x="310" y="20" width="180" height="60" rx="8"/><text x="400" y="58" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '潛在進入者' : 'Entrants'}</text>
-    <rect x="310" y="320" width="180" height="60" rx="8"/><text x="400" y="358" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '替代品' : 'Substitutes'}</text>
+    <rect x="310" y="340" width="180" height="60" rx="8"/><text x="400" y="378" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '替代品' : 'Substitutes'}</text>
     <rect x="50" y="170" width="180" height="60" rx="8"/><text x="140" y="208" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '供應商' : 'Suppliers'}</text>
     <rect x="570" y="170" width="180" height="60" rx="8"/><text x="660" y="208" textAnchor="middle" className="text-xl fill-current stroke-none font-bold">{lang === 'zh' ? '買方' : 'Buyers'}</text>
-    {/* Complements */}
+    
     <rect x="50" y="20" width="180" height="60" rx="8" className="stroke-red-500 fill-red-50 dark:fill-red-900/20" strokeWidth="4"/>
     <text x="140" y="58" textAnchor="middle" className="text-xl fill-red-600 dark:fill-red-400 font-black stroke-none">{lang === 'zh' ? '互補品 (+1)' : 'Complements'}</text>
-    {/* Arrows */}
-    <path d="M400 80 L400 115" markerEnd="url(#arrow)"/><path d="M400 320 L400 285" markerEnd="url(#arrow)"/>
+    
+    <path d="M400 80 L400 120" markerEnd="url(#arrow)"/><path d="M400 340 L400 280" markerEnd="url(#arrow)"/>
     <path d="M230 200 L315 200" markerEnd="url(#arrow)"/><path d="M570 200 L485 200" markerEnd="url(#arrow)"/>
-    <path d="M140 80 L140 165" className="stroke-red-500" strokeDasharray="6,6"/>
+    <path d="M140 80 L140 170" className="stroke-red-500" strokeDasharray="6,6"/>
     <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" stroke="none"/></marker></defs>
   </svg>
 );
 
 const SvgM2 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
-    <path d="M100 300 Q 300 300, 400 150 T 700 250" strokeWidth="5"/>
-    <text x="200" y="280" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '成長期' : 'Growth'}</text>
-    <text x="400" y="120" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '成熟期' : 'Maturity'}</text>
-    <text x="600" y="230" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '衰退期' : 'Decline'}</text>
-    <path d="M250 250 Q 350 150, 450 50" strokeWidth="4" className="stroke-red-500" strokeDasharray="8,8"/>
-    <text x="350" y="130" className="text-xl fill-red-500 stroke-none font-black">{lang === 'zh' ? '創造性破壞' : 'Creative Destruction'}</text>
-    <line x1="50" y1="350" x2="750" y2="350" strokeWidth="3"/>
-    <line x1="50" y1="350" x2="50" y2="50" strokeWidth="3"/>
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+    <path d="M100 330 Q 300 330, 400 180 T 700 280" strokeWidth="5"/>
+    <text x="200" y="310" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '成長期' : 'Growth'}</text>
+    <text x="400" y="150" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '成熟期' : 'Maturity'}</text>
+    <text x="600" y="260" className="text-xl font-bold fill-current stroke-none">{lang === 'zh' ? '衰退期' : 'Decline'}</text>
+    <path d="M250 280 Q 350 180, 450 80" strokeWidth="4" className="stroke-red-500" strokeDasharray="8,8"/>
+    <text x="350" y="160" className="text-xl fill-red-500 stroke-none font-black">{lang === 'zh' ? '創造性破壞' : 'Creative Destruction'}</text>
+    <line x1="50" y1="380" x2="750" y2="380" strokeWidth="3"/>
+    <line x1="50" y1="380" x2="50" y2="50" strokeWidth="3"/>
   </svg>
 );
 
 const SvgM3 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
-    <rect x="250" y="100" width="300" height="200" rx="10"/>
-    <line x1="400" y1="100" x2="400" y2="300"/>
-    <line x1="250" y1="200" x2="550" y2="200"/>
-    <text x="325" y="160" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '合作, 合作' : 'C, C'}</text>
-    <text x="475" y="160" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '合作, 背叛' : 'C, D'}</text>
-    <text x="325" y="260" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '背叛, 合作' : 'D, C'}</text>
-    <text x="475" y="260" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '背叛, 背叛' : 'D, D'}</text>
-    <text x="400" y="70" textAnchor="middle" className="fill-current stroke-none font-black text-2xl">{lang === 'zh' ? '企業 B (Firm B)' : 'Firm B'}</text>
-    <text x="210" y="200" textAnchor="middle" className="fill-current stroke-none font-black text-2xl transform -rotate-90" style={{transformOrigin:'210px 200px'}}>{lang === 'zh' ? '企業 A (Firm A)' : 'Firm A'}</text>
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+    <rect x="250" y="120" width="300" height="200" rx="10"/>
+    <line x1="400" y1="120" x2="400" y2="320"/>
+    <line x1="250" y1="220" x2="550" y2="220"/>
+    <text x="325" y="180" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '合作, 合作' : 'C, C'}</text>
+    <text x="475" y="180" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '合作, 背叛' : 'C, D'}</text>
+    <text x="325" y="280" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '背叛, 合作' : 'D, C'}</text>
+    <text x="475" y="280" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '背叛, 背叛' : 'D, D'}</text>
+    <text x="400" y="90" textAnchor="middle" className="fill-current stroke-none font-black text-2xl">{lang === 'zh' ? '企業 B (Firm B)' : 'Firm B'}</text>
+    <text x="210" y="220" textAnchor="middle" className="fill-current stroke-none font-black text-2xl transform -rotate-90" style={{transformOrigin:'210px 220px'}}>{lang === 'zh' ? '企業 A (Firm A)' : 'Firm A'}</text>
   </svg>
 );
 
 const SvgM4 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
-    <rect x="120" y="140" width="120" height="120" rx="10" className="fill-white dark:fill-slate-800"/>
-    <text x="180" y="185" textAnchor="middle" className="font-black text-xl fill-current stroke-none">{lang === 'zh' ? '市場共通性' : 'M/C'}</text>
-    <text x="180" y="235" textAnchor="middle" className="font-black text-xl fill-current stroke-none">{lang === 'zh' ? '資源相似性' : 'R/S'}</text>
-    <path d="M240 200 L320 200" markerEnd="url(#arrow)"/>
-    <rect x="330" y="120" width="140" height="160" rx="10" className="fill-slate-100 dark:fill-slate-700"/>
-    <text x="400" y="160" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '覺察(A)' : 'Awareness'}</text>
-    <text x="400" y="210" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '動機(M)' : 'Motivation'}</text>
-    <text x="400" y="260" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '能力(C)' : 'Capability'}</text>
-    <path d="M470 200 L540 200" markerEnd="url(#arrow)"/>
-    <circle cx="600" cy="200" r="50" className="fill-white dark:fill-slate-800"/>
-    <text x="600" y="208" textAnchor="middle" className="font-black text-2xl fill-current stroke-none">{lang === 'zh' ? '行動' : 'Action'}</text>
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+    <rect x="120" y="160" width="120" height="120" rx="10" className="fill-white dark:fill-slate-800"/>
+    <text x="180" y="205" textAnchor="middle" className="font-black text-xl fill-current stroke-none">{lang === 'zh' ? '市場共通性' : 'M/C'}</text>
+    <text x="180" y="255" textAnchor="middle" className="font-black text-xl fill-current stroke-none">{lang === 'zh' ? '資源相似性' : 'R/S'}</text>
+    <path d="M240 220 L320 220" markerEnd="url(#arrow)"/>
+    <rect x="330" y="140" width="140" height="160" rx="10" className="fill-slate-100 dark:fill-slate-700"/>
+    <text x="400" y="180" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '覺察(A)' : 'Awareness'}</text>
+    <text x="400" y="230" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '動機(M)' : 'Motivation'}</text>
+    <text x="400" y="280" textAnchor="middle" className="fill-current stroke-none font-bold text-xl">{lang === 'zh' ? '能力(C)' : 'Capability'}</text>
+    <path d="M470 220 L540 220" markerEnd="url(#arrow)"/>
+    <circle cx="600" cy="220" r="50" className="fill-white dark:fill-slate-800"/>
+    <text x="600" y="228" textAnchor="middle" className="font-black text-2xl fill-current stroke-none">{lang === 'zh' ? '行動' : 'Action'}</text>
   </svg>
 );
 
 const SvgM5 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
-    <line x1="100" y1="350" x2="700" y2="350" strokeWidth="3"/>
-    <line x1="100" y1="350" x2="100" y2="50" strokeWidth="3"/>
-    <text x="400" y="380" textAnchor="middle" className="fill-current stroke-none text-lg font-bold">{lang === 'zh' ? '產品範圍 (Product Range)' : 'Product Range'}</text>
-    <text x="70" y="200" textAnchor="middle" className="fill-current stroke-none text-lg font-bold transform -rotate-90" style={{transformOrigin:'70px 200px'}}>{lang === 'zh' ? '地理佈局 (Geographic Scope)' : 'Geographic Scope'}</text>
+  <svg viewBox="0 0 800 440" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
+    <line x1="100" y1="380" x2="700" y2="380" strokeWidth="3"/>
+    <line x1="100" y1="380" x2="100" y2="50" strokeWidth="3"/>
+    <text x="400" y="410" textAnchor="middle" className="fill-current stroke-none text-lg font-bold">{lang === 'zh' ? '產品範圍 (Product Range)' : 'Product Range'}</text>
+    <text x="70" y="215" textAnchor="middle" className="fill-current stroke-none text-lg font-bold transform -rotate-90" style={{transformOrigin:'70px 215px'}}>{lang === 'zh' ? '地理佈局 (Geographic Scope)' : 'Geographic Scope'}</text>
     
-    <circle cx="250" cy="250" r="50" className="fill-bcgGold/20 stroke-bcgGold"/>
-    <text x="250" y="258" textAnchor="middle" className="fill-current stroke-none text-xl font-black">{lang === 'zh' ? '群組 A' : 'Group A'}</text>
+    <circle cx="250" cy="280" r="50" className="fill-bcgGold/20 stroke-bcgGold"/>
+    <text x="250" y="288" textAnchor="middle" className="fill-current stroke-none text-xl font-black">{lang === 'zh' ? '群組 A' : 'Group A'}</text>
     
-    <circle cx="550" cy="150" r="70" className="fill-bcgGreen/20 stroke-bcgGreen dark:fill-bcgGold/40"/>
-    <text x="550" y="158" textAnchor="middle" className="fill-current stroke-none text-xl font-black">{lang === 'zh' ? '群組 B' : 'Group B'}</text>
+    <circle cx="550" cy="180" r="70" className="fill-bcgGreen/20 stroke-bcgGreen dark:fill-bcgGold/40"/>
+    <text x="550" y="188" textAnchor="middle" className="fill-current stroke-none text-xl font-black">{lang === 'zh' ? '群組 B' : 'Group B'}</text>
     
-    <path d="M300 240 Q 425 240, 480 180" className="stroke-red-500" strokeDasharray="6,6" markerEnd="url(#arrow)"/>
-    <text x="390" y="200" className="fill-red-500 stroke-none text-lg font-bold">{lang === 'zh' ? '移動障礙' : 'Mobility Barriers'}</text>
+    <path d="M300 270 Q 425 270, 480 210" className="stroke-red-500" strokeDasharray="6,6" markerEnd="url(#arrow)"/>
+    <text x="390" y="230" className="fill-red-500 stroke-none text-lg font-bold">{lang === 'zh' ? '移動障礙' : 'Mobility Barriers'}</text>
   </svg>
 );
 
@@ -923,7 +922,10 @@ function App() {
   const getFullTTSContent = () => {
     let txt = "";
     if (module === 0) {
-      txt = `${t.m0_title}. ${t.m0_intro}. ${t.m0_why}. ${t.m0_why_desc}`;
+      txt = `${t.m0_title}. ${t.m0_intro}. ${t.m0_why}. ${t.m0_why_desc}. `;
+      t.m0_stats.forEach(s => { txt += `${s.val}, ${s.label}. `; });
+      txt += `${lang === 'zh' ? '課程模組清單：' : 'Course Modules: '} `;
+      t.m0_modules.forEach(m => { txt += `模組 ${m.num}, ${m.title}. ${m.desc}. `; });
     } else if (module >= 1 && module <= N) {
       const mk = `m${module}`;
       txt = `${t[`${mk}_title`]}. ${t[`${mk}_p1`]} ${t[`${mk}_p2`]} ${t[`${mk}_p3`]}. `;
@@ -1064,7 +1066,7 @@ function App() {
           
           {/* Card Deck Wrapper - Passed moduleKey to ensure absolute reset on change */}
           <div className="bg-slate-50 dark:bg-slate-800/30 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
-             <CardDeck key={module} cards={t[`${mk}_terms`]} t={t} onCardRead={(r,tot)=>handleCardRead(module,r,tot)} moduleKey={module}/>
+             <CardDeck key={`carddeck-${module}`} cards={t[`${mk}_terms`]} t={t} onCardRead={(r,tot)=>handleCardRead(module,r,tot)} moduleKey={module}/>
           </div>
 
           {/* Module SVG: Reduced to ~1/2 max width, highly legible */}
@@ -1092,7 +1094,7 @@ function App() {
         {label:lang==='zh'?'Grant 教科書第四章 PDF（課程指定）':'Grant Ch.4 PDF (Course Required)',url:'#',desc:lang==='zh'?'Further Topics in Industry and Competitive Analysis':'Further Topics in Industry and Competitive Analysis'},
         {label:lang==='zh'?'Brandenburger & Nalebuff: Co-opetition（經典著作）':'Brandenburger & Nalebuff: Co-opetition (Classic)',url:'https://www.amazon.com/Co-Opetition-Adam-M-Brandenburger/dp/0385479506',desc:lang==='zh'?'競合策略的開山之作，提出價值網與 PARTS 架構':'The foundational work on co-opetition, introducing Value Net and PARTS'},
         {label:lang==='zh'?'台積電 OIP 官方頁面':'TSMC OIP Official Page',url:'https://esg.tsmc.com/ch/update/innovationAndService/caseStudy/1/index.html',desc:lang==='zh'?'了解台積電開放創新平台的生態系架構':'Explore TSMC Open Innovation Platform ecosystem'},
-        {label:lang==='zh'?'Porter 五力分析影片（HBR）':'Porter Five Forces Video (HBR)',url:'https://www.youtube.com/watch?v=mYF2_FBCvXw',desc:lang==='zh'?'Harvard Business Review 製作的五力框架動畫解說':'HBR animated explainer on Porter Five Forces'},
+        {label:lang==='zh'?'Porter 五力分析影片（HBR）':'Porter Five Forces Video (HBR)',url:'https://www.youtube.com/watch?v=mYF2_FBCvXw',desc:lang==='zh'?'Harvard Business Review 製作的五力架構動畫解說':'HBR animated explainer on Porter Five Forces'},
       ];
       const otherLinks = [
         {icon:'🎮',cat:lang==='zh'?'賽局理論':'Game Theory',items:[
