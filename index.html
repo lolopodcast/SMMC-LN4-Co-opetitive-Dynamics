@@ -39,7 +39,7 @@ tailwind.config = {
 @keyframes fadeInUp { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
 .animate-fade-in { animation: fadeInUp 0.5s ease-out forwards; }
 .perspective { perspective: 1000px; }
-.transform-style-3d { transform-style: preserve-3d; }
+.transform-style-3d { transform-style: preserve-3d; transition: transform 0.6s; }
 .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .rotate-y-180 { transform: rotateY(180deg); }
 
@@ -58,7 +58,7 @@ const { useState, useEffect, useRef } = React;
 const dict = {
   zh: {
     brand: "CD", title: "產業分析與競合動態", subtitle: "SMMC · 互動學習系列",
-    nav_modules: "單元目錄", nav_prev: "上一單元", nav_next: "下一單元",
+    nav_modules: "單元目錄", nav_prev: "上一單元 (Previous Page)", nav_next: "下一單元 (Next Page)",
     key_terms: "關鍵專有名詞", flip_prompt: "點擊翻轉", audio_read: "語音導覽",
     quiz_title: "模組知識檢定", wrap_up: "總結 (Wrap-up)",
     submit: "提交答案", retry: "重新測驗 (Retry)", next: "下一頁 (Next)",
@@ -120,7 +120,7 @@ const dict = {
       { q: "價值網（Value Net）框架是由誰提出的？", opts: ["Michael Porter","Joseph Schumpeter","Brandenburger & Nalebuff","Clay Christensen"], ans: 2, exp: "Brandenburger 與 Nalebuff 提出價值網框架，補充了五力分析的不足。" },
       { q: "台積電 OIP 生態系屬於哪種互補品策略？", opts: ["封閉整合策略","開放平台促進互補品競爭","價格戰策略","垂直整合策略"], ans: 1, exp: "台積電透過開放製程資訊，促進 EDA 等互補品供應商的競爭，使整體生態價值回流至自身。" }
     ],
-    m1_wrap: "總結：傳統五力架構將產業視為靜態結構，但忽略了「互補品」帶來的價值共創力量。透過價值網與平台策略，企業能利用網路外部性建立難以跨越的護城河，正如台積電 OIP 生態系所展現的戰略佈局。",
+    m1_wrap: "傳統五力架構將產業視為靜態結構，但忽略了「互補品」帶來的價值共創力量。透過價值網與平台策略，企業能利用網路外部性建立難以跨越的護城河，正如台積電 OIP 生態系所展現的戰略佈局。",
 
     m2_nav: "2. 動態競爭與超級競爭", m2_title: "動態競爭與超級競爭",
     m2_p1: "Joseph Schumpeter 將競爭視為「創造性破壞的永恆風暴」：市場主導者不斷被對手的創新所挑戰甚至取代。這與 Porter 五力將產業結構視為穩定決定因素的觀點形成對比——如果結構變遷速度太快，五力框架就無法提供穩定的分析基礎。",
@@ -145,7 +145,7 @@ const dict = {
       { q: "台灣面板產業的衰退最能體現哪個理論概念？", opts: ["五力的穩定分析","創造性破壞與超級競爭","完美競爭市場","資源基礎觀"], ans: 1, exp: "面板產業技術快速迭代、產能過剩，完美體現了動態競爭觀。" },
       { q: "Rita McGrath 認為企業策略應如何調整？", opts: ["追求單一持久優勢","連續創造一系列短期優勢","避免所有競爭","只做防守不做進攻"], ans: 1, exp: "McGrath 認為持久優勢已成例外，企業應管理「優勢組合」。" }
     ],
-    m2_wrap: "總結：面對技術更迭與全球化的衝擊，靜態的優勢分析已不敷使用。理解創造性破壞的本質，並在產業生命週期的不同階段敏捷調整策略，創造「暫時性優勢組合」，是現代企業存活的關鍵。",
+    m2_wrap: "面對技術更迭與全球化的衝擊，靜態的優勢分析已不敷使用。理解創造性破壞的本質，並在產業生命週期的不同階段敏捷調整策略，創造「暫時性優勢組合」，是現代企業存活的關鍵。",
 
     m3_nav: "3. 賽局理論與競合策略", m3_title: "賽局理論與競合策略",
     m3_p1: "賽局理論克服了五力框架將競爭視為結構決定的靜態缺陷，允許我們將競爭建模為參與者之間的互動決策過程。它提供了兩大貢獻：一是幫助框定策略決策（識別參與者、選項、報酬、決策順序）；二是預測競爭結果並識別最優策略選擇。",
@@ -170,7 +170,7 @@ const dict = {
       { q: "PARTS 架構中的 A 代表什麼？", opts: ["行動 (Action)","附加價值 (Added Values)","聯盟 (Alliance)","分析 (Analysis)"], ans: 1, exp: "PARTS = Players, Added Values, Rules, Tactics, Scope." },
       { q: "承諾 (Commitment) 策略的關鍵要素是什麼？", opts: ["靈活性","不可逆轉性","秘密性","漸進性"], ans: 1, exp: "承諾之所以有效在於它是不可逆轉的，消除退路才能讓對手相信。" }
     ],
-    m3_wrap: "總結：賽局理論教導我們，競爭不必然是零和遊戲。透過 PARTS 架構分析互動關係，企業可以藉由承諾、嚇阻與改變賽局規則，主動塑造更有利的競合環境。",
+    m3_wrap: "賽局理論教導我們，競爭不必然是零和遊戲。透過 PARTS 架構分析互動關係，企業可以藉由承諾、嚇阻與改變賽局規則，主動塑造更有利的競合環境。",
 
     m4_nav: "4. 競爭者分析與競爭動態", m4_title: "競爭者分析與競爭動態",
     m4_p1: "在高度集中的產業中，企業的競爭環境主要由最近對手的行為所塑造。Porter 提出四構面競爭者分析框架：分析對手的現行策略、目標、產業假設、以及資源與能力，藉以預測其未來行為與對我方行動的反應。",
@@ -195,7 +195,7 @@ const dict = {
       { q: "7-ELEVEN 與全家的競爭動態屬於哪種組合？", opts: ["高 M/C × 低 R/S","低 M/C × 高 R/S","高 M/C × 高 R/S","低 M/C × 低 R/S"], ans: 2, exp: "市場高度重疊且資源組成極為相似，形成最激烈的競爭動態。" },
       { q: "策略性行動與戰術性行動的主要差異是什麼？", opts: ["規模大小","承諾程度與可逆轉性","速度快慢","花費金額"], ans: 1, exp: "策略性行動（如建廠）高度承諾且難逆轉；戰術性行動（如調價）較靈活可逆。" }
     ],
-    m4_wrap: "總結：競爭不是單向的攻擊，而是互動的對弈。透過 Porter 四構面與 AMC 模型，我們能夠洞察對手的決策邏輯，並預測他們對市場變化的反應速度與強度。",
+    m4_wrap: "競爭不是單向的攻擊，而是互動的對弈。透過 Porter 四構面與 AMC 模型，我們能夠洞察對手的決策邏輯，並預測他們對市場變化的反應速度與強度。",
 
     m5_nav: "5. 市場區隔與策略群組", m5_title: "市場區隔與策略群組",
     m5_p1: "要進行更精細的產業分析，必須將廣泛的產業拆解為更細緻的市場——這就是區隔分析。區隔的依據是客戶特性（人口統計、購買行為）與產品特性（價格、功能），目的是找出替代性限制最大的市場界線。",
@@ -220,7 +220,7 @@ const dict = {
       { q: "利潤池分析的主要用途是什麼？", opts: ["評估員工績效","識別價值鏈中最具獲利潛力的環節","計算市場佔有率","預測股價走勢"], ans: 1, exp: "利潤池分析將各環節營收與利潤率可視化，幫助識別高獲利環節。" },
       { q: "光陽在電動機車市場的主要移動障礙是什麼？", opts: ["換電網絡規模","品牌通路、全球經銷網與製造經驗","政府補貼","App 會員數"], ans: 1, exp: "光陽的壁壘在於 30 年積累的通路與製造經驗，新進者難以快速複製。" }
     ],
-    m5_wrap: "總結：市場並非鐵板一塊。透過市場區隔與策略群組分析，企業能精準定位自身的戰場，構建防禦性的「移動障礙」，並在價值鏈的利潤池中找到最佳的獲利據點。",
+    m5_wrap: "市場並非鐵板一塊。透過市場區隔與策略群組分析，企業能精準定位自身的戰場，構建防禦性的「移動障礙」，並在價值鏈的利潤池中找到最佳的獲利據點。",
 
     m6_nav: "6. 外部資源", m6_title: "延伸閱讀與外部資源", m6_desc: "精選與本單元主題相關的學術論文、影片、產業分析報告與新聞連結。",
     mlab_nav: "7. 互動實驗室", mlab_title: "互動實驗室", mlab_desc: "透過互動式圖表與模型，動態探索產業分析的核心概念。"
@@ -228,7 +228,7 @@ const dict = {
 
   en: {
     brand: "CD", title: "Industry Analysis & Co-opetitive Dynamics", subtitle: "SMMC · Interactive Learning Series",
-    nav_modules: "Module Menu", nav_prev: "Previous", nav_next: "Next",
+    nav_modules: "Module Menu", nav_prev: "Previous Page", nav_next: "Next Page",
     key_terms: "Key Terms", flip_prompt: "Click to flip", audio_read: "Audio Guide",
     quiz_title: "Module Quiz", wrap_up: "Wrap-up",
     submit: "Submit", retry: "Retry", next: "Next",
@@ -290,7 +290,7 @@ const dict = {
       { q: "Who proposed the Value Net framework?", opts: ["Michael Porter","Joseph Schumpeter","Brandenburger & Nalebuff","Clay Christensen"], ans: 2, exp: "Adam Brandenburger and Barry Nalebuff proposed the Value Net." },
       { q: "TSMC's OIP ecosystem represents which complement strategy?", opts: ["Closed integration","Open platform fostering complement competition","Price war","Vertical integration"], ans: 1, exp: "TSMC opens process info to promote EDA/IP competition." }
     ],
-    m1_wrap: "Wrap-up: The traditional five forces framework views industries as static structures but ignores the value co-creation of 'complements'. Through Value Net and platform strategies, firms build massive moats via network externalities, as shown by TSMC's OIP ecosystem.",
+    m1_wrap: "The traditional five forces framework views industries as static structures but ignores the value co-creation of 'complements'. Through Value Net and platform strategies, firms build massive moats via network externalities, as shown by TSMC's OIP ecosystem.",
 
     m2_nav: "2. Dynamic Competition", m2_title: "Dynamic Competition & Hypercompetition",
     m2_p1: "Joseph Schumpeter viewed competition as a 'perennial gale of creative destruction': market leaders are constantly challenged. If structural change is rapid, Porter's framework offers no stable analytical basis.",
@@ -315,7 +315,7 @@ const dict = {
       { q: "Taiwan's display decline best illustrates which concept?", opts: ["Five Forces stability","Creative destruction and hypercompetition","Perfect competition","Resource-based view"], ans: 1, exp: "Rapid tech iteration and overcapacity perfectly illustrate dynamic competition." },
       { q: "How should strategy adapt under McGrath's view?", opts: ["Pursue single durable advantage","Create series of short-term advantages","Avoid competition","Only defend"], ans: 1, exp: "Firms should manage 'advantage portfolios,' continuously launching new cycles." }
     ],
-    m2_wrap: "Wrap-up: Faced with tech shifts and globalization, static analysis falls short. Understanding creative destruction and agilely creating a portfolio of transient advantages across the industry lifecycle are key to survival.",
+    m2_wrap: "Faced with tech shifts and globalization, static analysis falls short. Understanding creative destruction and agilely creating a portfolio of transient advantages across the industry lifecycle are key to survival.",
 
     m3_nav: "3. Game Theory & Co-opetition", m3_title: "Game Theory & Co-opetition",
     m3_p1: "Game theory overcomes Five Forces' static defects, modeling competition as interactive decision-making. It helps frame strategic decisions and predicts competitive outcomes.",
@@ -340,7 +340,7 @@ const dict = {
       { q: "What does the 'A' in PARTS represent?", opts: ["Action","Added Values","Alliance","Analysis"], ans: 1, exp: "PARTS = Players, Added Values, Rules, Tactics, Scope." },
       { q: "What is the key element of commitment strategy?", opts: ["Flexibility","Irreversibility","Secrecy","Gradualism"], ans: 1, exp: "Commitment works because it's irreversible—eliminating retreat options." }
     ],
-    m3_wrap: "Wrap-up: Game theory teaches that competition isn't always zero-sum. By analyzing interactions via the PARTS framework, firms can proactively shape favorable co-opetitive environments through commitments and deterrence.",
+    m3_wrap: "Game theory teaches that competition isn't always zero-sum. By analyzing interactions via the PARTS framework, firms can proactively shape favorable co-opetitive environments through commitments and deterrence.",
 
     m4_nav: "4. Competitor Analysis", m4_title: "Competitor Analysis & Competitive Dynamics",
     m4_p1: "Porter proposes a four-component competitor analysis framework: current strategy, objectives, industry assumptions, and resources & capabilities.",
@@ -365,7 +365,7 @@ const dict = {
       { q: "7-ELEVEN vs. FamilyMart represents which combination?", opts: ["High M/C × Low R/S","Low M/C × High R/S","High M/C × High R/S","Low M/C × Low R/S"], ans: 2, exp: "Heavy market overlap (high M/C) with very similar resources (high R/S)." },
       { q: "What distinguishes strategic from tactical actions?", opts: ["Size difference","Commitment level and reversibility","Speed difference","Cost amount"], ans: 1, exp: "Strategic actions involve high commitment and irreversibility; tactical actions are flexible." }
     ],
-    m4_wrap: "Wrap-up: Competition is an interactive game. Through Porter's four components and the AMC model, we can deduce rivals' decision logic and anticipate the speed and intensity of their responses.",
+    m4_wrap: "Competition is an interactive game. Through Porter's four components and the AMC model, we can deduce rivals' decision logic and anticipate the speed and intensity of their responses.",
 
     m5_nav: "5. Segmentation & Strategic Groups", m5_title: "Segmentation & Strategic Groups",
     m5_p1: "Segmentation disaggregates broad industries into specific markets based on customer and product characteristics to find market boundaries.",
@@ -390,7 +390,7 @@ const dict = {
       { q: "What is the main use of profit pool analysis?", opts: ["Evaluate employees","Identify most profitable value chain activities","Calculate market share","Predict stock prices"], ans: 1, exp: "Maps margins across value chain to identify high-profit segments." },
       { q: "What is KYMCO's main mobility barrier?", opts: ["Swap network scale","Brand channels, global dealer network & manufacturing","Government subsidies","App members"], ans: 1, exp: "KYMCO's barriers are 30 years of manufacturing, brand channels, and global networks." }
     ],
-    m5_wrap: "Wrap-up: Markets are not monoliths. Segmentation and strategic group analysis allow firms to precisely pinpoint their battlegrounds, establish defensive 'mobility barriers', and capture high margins in the profit pool.",
+    m5_wrap: "Markets are not monoliths. Segmentation and strategic group analysis allow firms to precisely pinpoint their battlegrounds, establish defensive 'mobility barriers', and capture high margins in the profit pool.",
 
     m6_nav: "6. External Resources", m6_title: "Extended Reading & External Resources", m6_desc: "Curated academic papers, videos, industry reports, and news links related to this module's topics.",
     mlab_nav: "7. Interactive Lab", mlab_title: "Interactive Lab", mlab_desc: "Explore core industry analysis concepts through interactive charts and models."
@@ -422,107 +422,246 @@ const IconZapLab = ({size=24,className=""})=><svg width={size} height={size} vie
 const IconBarChart2 = ({size=24,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>;
 const IconExternalLink = ({size=14,className=""})=><svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>;
 
-// SVGs for Modules (Structure Maps - Adapted for 2/3 scale readability on Home)
+/* =========================================================================================
+   SVGs For Modules 
+   To guarantee readability when scaled down to 2/3 (Home) or 1/2 (Modules), 
+   the inner coordinates and viewBox dimensions have been reduced by half (400x200),
+   which mathematically doubles the rendered size of text and strokes relative to the container!
+   ========================================================================================= */
 const SvgHome = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="3" fill="none">
-    <rect x="250" y="140" width="300" height="120" rx="15" className="fill-white dark:fill-slate-800 border-2" />
-    <text x="400" y="208" textAnchor="middle" className="font-serif font-black text-2xl fill-current stroke-none">
+  <svg viewBox="0 0 400 200" className="w-full sm:w-2/3 max-w-lg mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2.5" fill="none">
+    <rect x="125" y="70" width="150" height="60" rx="8" className="fill-white dark:fill-slate-800 border-2" />
+    <text x="200" y="106" textAnchor="middle" className="font-serif font-black text-[14px] fill-current stroke-none">
       {lang === 'zh' ? '產業分析與競合動態' : 'Industry Analysis'}
     </text>
     {/* Nodes mapping to all 5 modules */}
-    <circle cx="120" cy="80" r="50" className="fill-white dark:fill-slate-800"/><text x="120" y="86" textAnchor="middle" className="text-base fill-current stroke-none font-bold">{lang === 'zh' ? '五力與互補' : '5+1 Forces'}</text>
-    <circle cx="680" cy="80" r="50" className="fill-white dark:fill-slate-800"/><text x="680" y="86" textAnchor="middle" className="text-base fill-current stroke-none font-bold">{lang === 'zh' ? '動態競爭' : 'Dynamics'}</text>
-    <circle cx="120" cy="320" r="50" className="fill-white dark:fill-slate-800"/><text x="120" y="326" textAnchor="middle" className="text-base fill-current stroke-none font-bold">{lang === 'zh' ? '賽局理論' : 'Game Theory'}</text>
-    <circle cx="680" cy="320" r="50" className="fill-white dark:fill-slate-800"/><text x="680" y="326" textAnchor="middle" className="text-base fill-current stroke-none font-bold">{lang === 'zh' ? 'AMC 模型' : 'AMC Model'}</text>
-    <circle cx="400" cy="350" r="50" className="fill-white dark:fill-slate-800"/><text x="400" y="356" textAnchor="middle" className="text-base fill-current stroke-none font-bold">{lang === 'zh' ? '市場區隔' : 'Segments'}</text>
+    <circle cx="60" cy="40" r="25" className="fill-white dark:fill-slate-800"/><text x="60" y="44" textAnchor="middle" className="text-[10px] fill-current stroke-none font-bold">{lang === 'zh' ? '五力與互補' : '5+1 Forces'}</text>
+    <circle cx="340" cy="40" r="25" className="fill-white dark:fill-slate-800"/><text x="340" y="44" textAnchor="middle" className="text-[10px] fill-current stroke-none font-bold">{lang === 'zh' ? '動態競爭' : 'Dynamics'}</text>
+    <circle cx="60" cy="160" r="25" className="fill-white dark:fill-slate-800"/><text x="60" y="164" textAnchor="middle" className="text-[10px] fill-current stroke-none font-bold">{lang === 'zh' ? '賽局理論' : 'Game Theory'}</text>
+    <circle cx="340" cy="160" r="25" className="fill-white dark:fill-slate-800"/><text x="340" y="164" textAnchor="middle" className="text-[10px] fill-current stroke-none font-bold">{lang === 'zh' ? 'AMC 模型' : 'AMC Model'}</text>
+    <circle cx="200" cy="175" r="25" className="fill-white dark:fill-slate-800"/><text x="200" y="179" textAnchor="middle" className="text-[10px] fill-current stroke-none font-bold">{lang === 'zh' ? '市場區隔' : 'Segments'}</text>
     {/* Lines connecting core to modules */}
-    <path d="M250 170 L160 110" strokeDasharray="6,6"/> <path d="M550 170 L640 110" strokeDasharray="6,6"/>
-    <path d="M250 230 L160 290" strokeDasharray="6,6"/> <path d="M550 230 L640 290" strokeDasharray="6,6"/>
-    <path d="M400 260 L400 300" strokeDasharray="6,6"/>
+    <path d="M125 85 L80 55" strokeDasharray="4,4"/> <path d="M275 85 L320 55" strokeDasharray="4,4"/>
+    <path d="M125 115 L80 145" strokeDasharray="4,4"/> <path d="M275 115 L320 145" strokeDasharray="4,4"/>
+    <path d="M200 130 L200 150" strokeDasharray="4,4"/>
   </svg>
 );
 
 const SvgM1 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2" fill="none">
-    <circle cx="400" cy="200" r="65" className="fill-slate-100 dark:fill-slate-800"/>
-    <text x="400" y="205" textAnchor="middle" className="font-bold fill-current stroke-none">{lang === 'zh' ? '同業競爭' : 'Rivalry'}</text>
-    <rect x="340" y="40" width="120" height="40" rx="5"/><text x="400" y="65" textAnchor="middle" className="text-sm fill-current stroke-none">{lang === 'zh' ? '潛在進入者' : 'Entrants'}</text>
-    <rect x="340" y="320" width="120" height="40" rx="5"/><text x="400" y="345" textAnchor="middle" className="text-sm fill-current stroke-none">{lang === 'zh' ? '替代品' : 'Substitutes'}</text>
-    <rect x="90" y="180" width="120" height="40" rx="5"/><text x="150" y="205" textAnchor="middle" className="text-sm fill-current stroke-none">{lang === 'zh' ? '供應商' : 'Suppliers'}</text>
-    <rect x="590" y="180" width="120" height="40" rx="5"/><text x="650" y="205" textAnchor="middle" className="text-sm fill-current stroke-none">{lang === 'zh' ? '買方' : 'Buyers'}</text>
+  <svg viewBox="0 0 400 200" className="w-full md:w-1/2 mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="1.5" fill="none">
+    <circle cx="200" cy="100" r="32" className="fill-slate-100 dark:fill-slate-800"/>
+    <text x="200" y="104" textAnchor="middle" className="font-bold text-[12px] fill-current stroke-none">{lang === 'zh' ? '同業競爭' : 'Rivalry'}</text>
+    <rect x="170" y="20" width="60" height="20" rx="3"/><text x="200" y="34" textAnchor="middle" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '潛在進入者' : 'Entrants'}</text>
+    <rect x="170" y="160" width="60" height="20" rx="3"/><text x="200" y="174" textAnchor="middle" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '替代品' : 'Substitutes'}</text>
+    <rect x="45" y="90" width="60" height="20" rx="3"/><text x="75" y="104" textAnchor="middle" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '供應商' : 'Suppliers'}</text>
+    <rect x="295" y="90" width="60" height="20" rx="3"/><text x="325" y="104" textAnchor="middle" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '買方' : 'Buyers'}</text>
     {/* Complements the 6th force */}
-    <rect x="90" y="40" width="120" height="40" rx="5" className="stroke-red-500 fill-red-50 dark:fill-red-900/20" strokeWidth="3"/>
-    <text x="150" y="65" textAnchor="middle" className="text-sm fill-red-600 dark:fill-red-400 font-bold stroke-none">{lang === 'zh' ? '互補品 (+1)' : 'Complements (+1)'}</text>
+    <rect x="45" y="20" width="60" height="20" rx="3" className="stroke-red-500 fill-red-50 dark:fill-red-900/20" strokeWidth="2"/>
+    <text x="75" y="34" textAnchor="middle" className="text-[10px] fill-red-600 dark:fill-red-400 font-bold stroke-none">{lang === 'zh' ? '互補品 (+1)' : 'Complements'}</text>
     {/* Arrows */}
-    <path d="M400 85 L400 135" markerEnd="url(#arrow)"/><path d="M400 315 L400 265" markerEnd="url(#arrow)"/>
-    <path d="M210 200 L335 200" markerEnd="url(#arrow)"/><path d="M590 200 L465 200" markerEnd="url(#arrow)"/>
-    <path d="M150 85 L150 175" className="stroke-red-500" strokeDasharray="5,5"/>
+    <path d="M200 42 L200 66" markerEnd="url(#arrow)"/><path d="M200 158 L200 134" markerEnd="url(#arrow)"/>
+    <path d="M107 100 L166 100" markerEnd="url(#arrow)"/><path d="M293 100 L234 100" markerEnd="url(#arrow)"/>
+    <path d="M75 42 L75 88" className="stroke-red-500" strokeDasharray="3,3"/>
     <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" stroke="none"/></marker></defs>
   </svg>
 );
 
 const SvgM2 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2" fill="none">
-    <path d="M100 300 Q 300 300, 400 150 T 700 250" strokeWidth="4"/>
-    <text x="200" y="280" className="text-sm fill-current stroke-none">{lang === 'zh' ? '成長期' : 'Growth'}</text>
-    <text x="400" y="120" className="text-sm fill-current stroke-none">{lang === 'zh' ? '成熟期' : 'Maturity'}</text>
-    <text x="600" y="230" className="text-sm fill-current stroke-none">{lang === 'zh' ? '衰退期' : 'Decline'}</text>
-    <path d="M250 250 Q 350 150, 450 50" strokeWidth="4" className="stroke-red-500" strokeDasharray="5,5"/>
-    <text x="350" y="130" className="text-sm fill-red-500 stroke-none font-bold">{lang === 'zh' ? '創造性破壞' : 'Creative Destruction'}</text>
-    <line x1="50" y1="350" x2="750" y2="350" strokeWidth="2"/>
-    <line x1="50" y1="350" x2="50" y2="50" strokeWidth="2"/>
+  <svg viewBox="0 0 400 200" className="w-full md:w-1/2 mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="1.5" fill="none">
+    <path d="M50 150 Q 150 150, 200 75 T 350 125" strokeWidth="3"/>
+    <text x="100" y="140" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '成長期' : 'Growth'}</text>
+    <text x="200" y="60" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '成熟期' : 'Maturity'}</text>
+    <text x="300" y="115" className="text-[10px] fill-current stroke-none">{lang === 'zh' ? '衰退期' : 'Decline'}</text>
+    <path d="M125 125 Q 175 75, 225 25" strokeWidth="2.5" className="stroke-red-500" strokeDasharray="4,4"/>
+    <text x="175" y="65" className="text-[10px] fill-red-500 stroke-none font-bold">{lang === 'zh' ? '創造性破壞' : 'Creative Destruction'}</text>
+    <line x1="25" y1="175" x2="375" y2="175" strokeWidth="2"/>
+    <line x1="25" y1="175" x2="25" y2="25" strokeWidth="2"/>
   </svg>
 );
 
 const SvgM3 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2" fill="none">
-    <rect x="250" y="100" width="300" height="200"/>
-    <line x1="400" y1="100" x2="400" y2="300"/>
-    <line x1="250" y1="200" x2="550" y2="200"/>
-    <text x="325" y="155" textAnchor="middle" className="fill-current stroke-none font-bold">{lang === 'zh' ? '合作, 合作' : 'C, C'}</text>
-    <text x="475" y="155" textAnchor="middle" className="fill-current stroke-none font-bold">{lang === 'zh' ? '合作, 背叛' : 'C, D'}</text>
-    <text x="325" y="255" textAnchor="middle" className="fill-current stroke-none font-bold">{lang === 'zh' ? '背叛, 合作' : 'D, C'}</text>
-    <text x="475" y="255" textAnchor="middle" className="fill-current stroke-none font-bold">{lang === 'zh' ? '背叛, 背叛' : 'D, D'}</text>
-    <text x="400" y="80" textAnchor="middle" className="fill-current stroke-none font-bold">{lang === 'zh' ? '企業 B (Firm B)' : 'Firm B'}</text>
-    <text x="210" y="205" textAnchor="middle" className="fill-current stroke-none font-bold transform -rotate-90" style={{transformOrigin:'210px 205px'}}>{lang === 'zh' ? '企業 A (Firm A)' : 'Firm A'}</text>
+  <svg viewBox="0 0 400 200" className="w-full md:w-1/2 mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="1.5" fill="none">
+    <rect x="125" y="50" width="150" height="100"/>
+    <line x1="200" y1="50" x2="200" y2="150"/>
+    <line x1="125" y1="100" x2="275" y2="100"/>
+    <text x="162" y="80" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px]">{lang === 'zh' ? '合作, 合作' : 'C, C'}</text>
+    <text x="237" y="80" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px]">{lang === 'zh' ? '合作, 背叛' : 'C, D'}</text>
+    <text x="162" y="130" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px]">{lang === 'zh' ? '背叛, 合作' : 'D, C'}</text>
+    <text x="237" y="130" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px]">{lang === 'zh' ? '背叛, 背叛' : 'D, D'}</text>
+    <text x="200" y="40" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px]">{lang === 'zh' ? '企業 B (Firm B)' : 'Firm B'}</text>
+    <text x="105" y="105" textAnchor="middle" className="fill-current stroke-none font-bold text-[12px] transform -rotate-90" style={{transformOrigin:'105px 105px'}}>{lang === 'zh' ? '企業 A (Firm A)' : 'Firm A'}</text>
   </svg>
 );
 
 const SvgM4 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2" fill="none">
-    <rect x="120" y="140" width="120" height="120" rx="10" className="fill-white dark:fill-slate-800"/>
-    <text x="180" y="185" textAnchor="middle" className="font-bold fill-current stroke-none">{lang === 'zh' ? '市場共通性' : 'M/C'}</text>
-    <text x="180" y="225" textAnchor="middle" className="font-bold fill-current stroke-none">{lang === 'zh' ? '資源相似性' : 'R/S'}</text>
-    <path d="M240 200 L320 200" markerEnd="url(#arrow)"/>
-    <rect x="330" y="120" width="140" height="160" rx="10" className="fill-slate-100 dark:fill-slate-700"/>
-    <text x="400" y="160" textAnchor="middle" className="fill-current stroke-none font-bold text-sm">{lang === 'zh' ? '覺察 (Awareness)' : 'Awareness'}</text>
-    <text x="400" y="205" textAnchor="middle" className="fill-current stroke-none font-bold text-sm">{lang === 'zh' ? '動機 (Motivation)' : 'Motivation'}</text>
-    <text x="400" y="250" textAnchor="middle" className="fill-current stroke-none font-bold text-sm">{lang === 'zh' ? '能力 (Capability)' : 'Capability'}</text>
-    <path d="M470 200 L540 200" markerEnd="url(#arrow)"/>
-    <circle cx="600" cy="200" r="50" className="fill-white dark:fill-slate-800"/>
-    <text x="600" y="205" textAnchor="middle" className="font-bold fill-current stroke-none">{lang === 'zh' ? '回應/行動' : 'Action'}</text>
+  <svg viewBox="0 0 400 200" className="w-full md:w-1/2 mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="1.5" fill="none">
+    <rect x="60" y="70" width="60" height="60" rx="5" className="fill-white dark:fill-slate-800"/>
+    <text x="90" y="94" textAnchor="middle" className="font-bold text-[12px] fill-current stroke-none">{lang === 'zh' ? '市場共通性' : 'M/C'}</text>
+    <text x="90" y="114" textAnchor="middle" className="font-bold text-[12px] fill-current stroke-none">{lang === 'zh' ? '資源相似性' : 'R/S'}</text>
+    <path d="M122" y="100" markerEnd="url(#arrow)"/>
+    <path d="M122 100 L160 100" markerEnd="url(#arrow)"/>
+    <rect x="165" y="60" width="70" height="80" rx="5" className="fill-slate-100 dark:fill-slate-700"/>
+    <text x="200" y="80" textAnchor="middle" className="fill-current stroke-none font-bold text-[10px]">{lang === 'zh' ? '覺察(A)' : 'Awareness'}</text>
+    <text x="200" y="104" textAnchor="middle" className="fill-current stroke-none font-bold text-[10px]">{lang === 'zh' ? '動機(M)' : 'Motivation'}</text>
+    <text x="200" y="128" textAnchor="middle" className="fill-current stroke-none font-bold text-[10px]">{lang === 'zh' ? '能力(C)' : 'Capability'}</text>
+    <path d="M237 100 L275 100" markerEnd="url(#arrow)"/>
+    <circle cx="300" cy="100" r="25" className="fill-white dark:fill-slate-800"/>
+    <text x="300" y="104" textAnchor="middle" className="font-bold text-[12px] fill-current stroke-none">{lang === 'zh' ? '行動' : 'Action'}</text>
   </svg>
 );
 
 const SvgM5 = ({ lang }) => (
-  <svg viewBox="0 0 800 400" className="w-full h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="2" fill="none">
-    <line x1="100" y1="350" x2="700" y2="350" strokeWidth="2"/>
-    <line x1="100" y1="350" x2="100" y2="50" strokeWidth="2"/>
-    <text x="400" y="380" textAnchor="middle" className="fill-current stroke-none text-sm">{lang === 'zh' ? '產品範圍 (Product Range)' : 'Product Range'}</text>
-    <text x="70" y="200" textAnchor="middle" className="fill-current stroke-none text-sm transform -rotate-90" style={{transformOrigin:'70px 200px'}}>{lang === 'zh' ? '地理佈局 (Geographic Scope)' : 'Geographic Scope'}</text>
+  <svg viewBox="0 0 400 200" className="w-full md:w-1/2 mx-auto h-auto text-bcgGreen dark:text-bcgGold" stroke="currentColor" strokeWidth="1.5" fill="none">
+    <line x1="50" y1="175" x2="350" y2="175" strokeWidth="2"/>
+    <line x1="50" y1="175" x2="50" y2="25" strokeWidth="2"/>
+    <text x="200" y="192" textAnchor="middle" className="fill-current stroke-none text-[10px]">{lang === 'zh' ? '產品範圍 (Product Range)' : 'Product Range'}</text>
+    <text x="35" y="100" textAnchor="middle" className="fill-current stroke-none text-[10px] transform -rotate-90" style={{transformOrigin:'35px 100px'}}>{lang === 'zh' ? '地理佈局 (Geographic Scope)' : 'Geographic Scope'}</text>
     
-    <circle cx="250" cy="250" r="50" className="fill-bcgGold/20 stroke-bcgGold"/>
-    <text x="250" y="255" textAnchor="middle" className="fill-current stroke-none text-xs font-bold">{lang === 'zh' ? '策略群組 A' : 'Group A'}</text>
+    <circle cx="125" cy="125" r="25" className="fill-bcgGold/20 stroke-bcgGold"/>
+    <text x="125" y="129" textAnchor="middle" className="fill-current stroke-none text-[10px] font-bold">{lang === 'zh' ? '群組 A' : 'Group A'}</text>
     
-    <circle cx="550" cy="150" r="70" className="fill-bcgGreen/20 stroke-bcgGreen dark:fill-bcgGold/40"/>
-    <text x="550" y="155" textAnchor="middle" className="fill-current stroke-none text-xs font-bold">{lang === 'zh' ? '策略群組 B' : 'Group B'}</text>
+    <circle cx="275" cy="75" r="35" className="fill-bcgGreen/20 stroke-bcgGreen dark:fill-bcgGold/40"/>
+    <text x="275" y="79" textAnchor="middle" className="fill-current stroke-none text-[10px] font-bold">{lang === 'zh' ? '群組 B' : 'Group B'}</text>
     
-    <path d="M300 240 Q 425 240, 480 180" className="stroke-red-500" strokeDasharray="5,5" markerEnd="url(#arrow)"/>
-    <text x="390" y="200" className="fill-red-500 stroke-none text-xs font-bold">{lang === 'zh' ? '移動障礙 (Barriers)' : 'Mobility Barriers'}</text>
+    <path d="M150 120 Q 212 120, 240 90" className="stroke-red-500" strokeDasharray="3,3" markerEnd="url(#arrow)"/>
+    <text x="195" y="100" className="fill-red-500 stroke-none text-[10px] font-bold">{lang === 'zh' ? '移動障礙' : 'Barriers'}</text>
   </svg>
 );
 
-// Lab Elements (Restored from Original HTML File)
+// Components
+const CardDeck = ({ cards, t, onCardRead }) => {
+  const [page, setPage] = useState(0);
+  const [flippedState, setFlippedState] = useState(new Set()); // Tracks current front/back facing
+  const [readCards, setReadCards] = useState(new Set()); // Tracks unique cards viewed
+  const itemsPerPage = 2; // Strict Rule: show 2 per page
+  const totalPages = Math.ceil(cards.length / itemsPerPage);
+  const visibleCards = cards.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
+
+  const handleFlip = (globalIdx) => {
+    // Flip Toggle Logic (Allows flipping back to front)
+    const newFlipped = new Set(flippedState);
+    if (newFlipped.has(globalIdx)) newFlipped.delete(globalIdx);
+    else newFlipped.add(globalIdx);
+    setFlippedState(newFlipped);
+
+    // Track Read Logic (Only adds, never deletes, for analytics)
+    const newRead = new Set(readCards);
+    if (!newRead.has(globalIdx)) {
+      newRead.add(globalIdx);
+      setReadCards(newRead);
+      onCardRead(newRead.size, cards.length);
+    }
+  };
+
+  const handleNext = () => {
+    setFlippedState(new Set()); // Reset to front on page change
+    if (page + 1 >= totalPages) setPage(0);
+    else setPage(page + 1);
+  };
+
+  const handleRetry = () => {
+    setFlippedState(new Set()); // Reset all faces
+    setPage(0);
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 select-none">{t.key_terms}</h3>
+        <span className="text-xs text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded select-none shadow-sm border border-slate-200 dark:border-slate-700">
+          Read: {readCards.size} / {cards.length}
+        </span>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {visibleCards.map((c, i) => {
+          const gIdx = page * itemsPerPage + i;
+          const isFlipped = flippedState.has(gIdx);
+          return (
+            <div key={gIdx} className="perspective cursor-pointer h-40" onClick={() => handleFlip(gIdx)}>
+              <div className={`transform-style-3d relative w-full h-full ${isFlipped ? 'rotate-y-180' : ''}`}>
+                <div className="backface-hidden absolute inset-0 bg-white dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 shadow-sm hover:border-bcgGold transition-colors select-none">
+                  <p className="font-serif font-bold text-center text-bcgGreen dark:text-bcgGold text-sm">{c.front}</p>
+                  <p className="text-xs text-slate-400 mt-2">{t.flip_prompt}</p>
+                </div>
+                <div className="backface-hidden rotate-y-180 absolute inset-0 bg-bcgGreen dark:bg-slate-700 rounded-xl p-5 flex items-center justify-center overflow-y-auto shadow-md">
+                  <p className="text-sm text-center text-bcgGold dark:text-slate-200 leading-relaxed select-none">{c.back}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex justify-end gap-3 mt-4 select-none">
+        <button onClick={handleRetry} className="px-4 py-2 text-xs font-bold border border-bcgGreen dark:border-bcgGold text-bcgGreen dark:text-bcgGold rounded-lg hover:bg-bcgGreen/10 transition-colors">{t.retry}</button>
+        <button onClick={handleNext} className="px-4 py-2 text-xs font-bold bg-bcgGreen dark:bg-bcgGold text-white dark:text-bcgGreen rounded-lg hover:bg-[#002b20] transition-colors shadow-sm">{t.next} ({page+1}/{totalPages})</button>
+      </div>
+    </div>
+  );
+};
+
+const QuizDeck = ({ questions, t, moduleId, onQuizSubmit }) => {
+  const [page, setPage] = useState(0);
+  const [selected, setSelected] = useState({});
+  const itemsPerPage = 2; // Strict Rule: show 2 per page
+  const totalPages = Math.ceil(questions.length / itemsPerPage);
+  const qIndices = [...Array(questions.length).keys()].slice(page*itemsPerPage, (page+1)*itemsPerPage);
+
+  const handleSelect = (globalIdx, optIdx) => {
+    const newSel = {...selected, [globalIdx]: optIdx};
+    setSelected(newSel);
+    // Update analytics dynamically
+    const answeredCount = Object.keys(newSel).length;
+    let correctCount = 0;
+    Object.keys(newSel).forEach(k => { if(newSel[k] === questions[k].ans) correctCount++; });
+    onQuizSubmit(moduleId, correctCount, answeredCount);
+  };
+
+  const handleNext = () => {
+    if (page + 1 >= totalPages) setPage(0);
+    else setPage(page + 1);
+  };
+
+  return (
+    <div className="mt-10 bg-white dark:bg-slate-900 rounded-xl p-5 sm:p-6 border border-slate-200 dark:border-slate-700 shadow-sm relative">
+      <div className="absolute -top-3 left-6 bg-bcgGold text-bcgGreen text-xs font-black px-3 py-1 rounded uppercase tracking-widest select-none shadow-sm flex items-center gap-2"><IconBookOpen size={14}/> {t.quiz_title}</div>
+      <div className="space-y-8 mt-4">
+        {qIndices.map((qIdx, i) => {
+          const q = questions[qIdx];
+          const ansSelected = selected[qIdx] !== undefined;
+          const isCorrect = selected[qIdx] === q.ans;
+          return (
+            <div key={qIdx} className="space-y-3">
+              <p className="font-bold text-slate-800 dark:text-slate-200 text-sm select-none">Q{qIdx+1}. {q.q}</p>
+              <div className="space-y-2 select-none">{q.opts.map((opt, oi) => {
+                let cls = "w-full text-left px-4 py-2.5 rounded-lg border text-sm transition-colors ";
+                if (!ansSelected) cls += "border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300";
+                else if (oi === q.ans) cls += "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-bold shadow-sm";
+                else if (selected[qIdx] === oi) cls += "border-red-400 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400";
+                else cls += "border-slate-200 dark:border-slate-600 opacity-50 text-slate-500";
+                return <button key={oi} disabled={ansSelected} onClick={() => handleSelect(qIdx, oi)} className={cls}>{opt}</button>;
+              })}</div>
+              {ansSelected && (
+                <div className={`p-3 rounded-lg text-xs mt-2 border ${isCorrect?'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800/50 text-green-800 dark:text-green-300':'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800/50 text-red-800 dark:text-red-300'}`}>
+                  <span className="font-bold mr-2 text-[13px]">{isCorrect ? t.praise_msg[qIdx%3] : t.encourage_msg[qIdx%3]}</span>
+                  <span className="opacity-90">{t.explanation}：{q.exp}</span>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex justify-between items-center mt-6 border-t border-slate-100 dark:border-slate-800 pt-4 select-none">
+        <span className="text-xs text-slate-500">Page {page+1} of {totalPages}</span>
+        <div className="flex gap-3">
+          <button onClick={() => { setSelected({}); setPage(0); }} className="px-4 py-2 text-xs font-bold border border-bcgGreen dark:border-bcgGold text-bcgGreen dark:text-bcgGold rounded-lg hover:bg-bcgGreen/10 transition-colors">{t.retry}</button>
+          <button onClick={handleNext} className="px-4 py-2 text-xs font-bold bg-bcgGreen dark:bg-bcgGold text-white dark:text-bcgGreen rounded-lg hover:bg-[#002b20] transition-colors shadow-sm">{t.next}</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// 互動實驗室 Labs 原版內容全數還原
 const FiveForcesPlusLab = ({lang}) => {
   const [complement, setComplement] = useState(50);
   const forces = [{name:lang==='zh'?'新進入者威脅':'Threat of Entry',val:60},{name:lang==='zh'?'供應商議價力':'Supplier Power',val:45},{name:lang==='zh'?'買方議價力':'Buyer Power',val:55},{name:lang==='zh'?'替代品威脅':'Substitutes',val:70},{name:lang==='zh'?'同業競爭':'Rivalry',val:80}];
@@ -633,117 +772,59 @@ const LifecycleLab = ({lang}) => {
   );
 };
 
-// Components
-const CardDeck = ({ cards, t, onCardRead }) => {
-  const [page, setPage] = useState(0);
-  const [flipped, setFlipped] = useState(new Set());
-  const itemsPerPage = 2; // Strict Rule: show 2 per page
-  const totalPages = Math.ceil(cards.length / itemsPerPage);
-  const visibleCards = cards.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
+const ValueNetLab = ({lang}) => {
+  const [nodes, setNodes] = useState({ top: null, bottom: null, left: null, right: null });
+  const [pool, setPool] = useState(['Customers', 'Suppliers', 'Competitors', 'Complementors']);
+  const isZh = lang === 'zh';
+  const labels = isZh ? {'Customers':'客戶', 'Suppliers':'供應商', 'Competitors':'競爭者', 'Complementors':'互補者'} : {'Customers':'Customers', 'Suppliers':'Suppliers', 'Competitors':'Competitors', 'Complementors':'Complementors'};
+  const check = { top: 'Customers', bottom: 'Suppliers', left: 'Competitors', right: 'Complementors' };
 
-  const handleFlip = (globalIdx) => {
-    const newSet = new Set(flipped).add(globalIdx);
-    setFlipped(newSet);
-    onCardRead(newSet.size, cards.length);
+  const handleDragStart = (e, item, source) => { e.dataTransfer.setData('item', item); e.dataTransfer.setData('source', source); };
+  const handleDrop = (e, targetPos) => {
+    e.preventDefault(); const item = e.dataTransfer.getData('item'); const source = e.dataTransfer.getData('source');
+    if (!item) return;
+    let newNodes = { ...nodes }; let newPool = [ ...pool ];
+    if (source === 'pool') newPool = newPool.filter(i => i !== item);
+    else newNodes[source] = null;
+    if (targetPos !== 'pool') {
+      if (newNodes[targetPos]) newPool.push(newNodes[targetPos]);
+      newNodes[targetPos] = item;
+    } else newPool.push(item);
+    setNodes(newNodes); setPool(newPool);
   };
+  const handleDragOver = (e) => e.preventDefault();
+  const handleReset = () => { setNodes({ top: null, bottom: null, left: null, right: null }); setPool(['Customers', 'Suppliers', 'Competitors', 'Complementors'].sort(()=>Math.random()-0.5)); };
+  const isWin = Object.keys(nodes).every(k => nodes[k] === check[k]);
 
-  const handleNext = () => {
-    if (page + 1 >= totalPages) setPage(0);
-    else setPage(page + 1);
-  };
-
-  return (
-    <div className="space-y-4">
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 select-none">{t.key_terms}</h3>
-        <span className="text-xs text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded select-none shadow-sm border border-slate-200 dark:border-slate-700">
-          Read: {flipped.size} / {cards.length}
-        </span>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {visibleCards.map((c, i) => {
-          const gIdx = page * itemsPerPage + i;
-          const isFlipped = flipped.has(gIdx);
-          return (
-            <div key={gIdx} className="perspective cursor-pointer h-40" onClick={() => handleFlip(gIdx)}>
-              <div className={`transform-style-3d relative w-full h-full transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}`}>
-                <div className="backface-hidden absolute inset-0 bg-white dark:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-700 shadow-sm hover:border-bcgGold transition-colors select-none">
-                  <p className="font-serif font-bold text-center text-bcgGreen dark:text-bcgGold text-sm">{c.front}</p>
-                  <p className="text-xs text-slate-400 mt-2">{t.flip_prompt}</p>
-                </div>
-                <div className="backface-hidden rotate-y-180 absolute inset-0 bg-bcgGreen dark:bg-slate-700 rounded-xl p-5 flex items-center justify-center overflow-y-auto shadow-md">
-                  <p className="text-sm text-center text-bcgGold dark:text-slate-200 leading-relaxed">{c.back}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="flex justify-end gap-3 mt-4 select-none">
-        <button onClick={() => { setFlipped(new Set()); setPage(0); }} className="px-4 py-2 text-xs font-bold border border-bcgGreen dark:border-bcgGold text-bcgGreen dark:text-bcgGold rounded-lg hover:bg-bcgGreen/10 transition-colors">{t.retry}</button>
-        <button onClick={handleNext} className="px-4 py-2 text-xs font-bold bg-bcgGreen dark:bg-bcgGold text-white dark:text-bcgGreen rounded-lg hover:bg-[#002b20] transition-colors shadow-sm">{t.next} ({page+1}/{totalPages})</button>
-      </div>
+  const renderSlot = (pos, labelHint) => (
+    <div onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, pos)} className={`w-32 h-12 border-2 border-dashed rounded flex items-center justify-center text-sm font-bold transition-colors ${nodes[pos] === check[pos] ? 'bg-green-100 border-green-500 dark:bg-green-900/30 text-green-700 dark:text-green-400' : nodes[pos] ? 'bg-red-100 border-red-500 dark:bg-red-900/30 text-red-700 dark:text-red-400' : 'border-slate-400 bg-slate-50 dark:bg-slate-700 text-slate-500'}`}>
+      {nodes[pos] ? (<div draggable onDragStart={(e) => handleDragStart(e, nodes[pos], pos)} className="w-full h-full flex items-center justify-center cursor-move bg-bcgGold text-bcgGreen rounded shadow hover:scale-105 transition-transform">{labels[nodes[pos]]}</div>) : (<span className="opacity-60">{labelHint}</span>)}
     </div>
   );
-};
-
-const QuizDeck = ({ questions, t, moduleId, onQuizSubmit }) => {
-  const [page, setPage] = useState(0);
-  const [selected, setSelected] = useState({});
-  const itemsPerPage = 2; // Strict Rule: show 2 per page
-  const totalPages = Math.ceil(questions.length / itemsPerPage);
-  const qIndices = [...Array(questions.length).keys()].slice(page*itemsPerPage, (page+1)*itemsPerPage);
-
-  const handleSelect = (globalIdx, optIdx) => {
-    const newSel = {...selected, [globalIdx]: optIdx};
-    setSelected(newSel);
-    // Update analytics dynamically
-    const answeredCount = Object.keys(newSel).length;
-    let correctCount = 0;
-    Object.keys(newSel).forEach(k => { if(newSel[k] === questions[k].ans) correctCount++; });
-    onQuizSubmit(moduleId, correctCount, answeredCount);
-  };
-
-  const handleNext = () => {
-    if (page + 1 >= totalPages) setPage(0);
-    else setPage(page + 1);
-  };
 
   return (
-    <div className="mt-10 bg-white dark:bg-slate-900 rounded-xl p-5 sm:p-6 border border-slate-200 dark:border-slate-700 shadow-sm relative">
-      <div className="absolute -top-3 left-6 bg-bcgGold text-bcgGreen text-xs font-black px-3 py-1 rounded uppercase tracking-widest select-none shadow-sm flex items-center gap-2"><IconBookOpen size={14}/> {t.quiz_title}</div>
-      <div className="space-y-8 mt-4">
-        {qIndices.map((qIdx, i) => {
-          const q = questions[qIdx];
-          const ansSelected = selected[qIdx] !== undefined;
-          const isCorrect = selected[qIdx] === q.ans;
-          return (
-            <div key={qIdx} className="space-y-3">
-              <p className="font-bold text-slate-800 dark:text-slate-200 text-sm">Q{qIdx+1}. {q.q}</p>
-              <div className="space-y-2 select-none">{q.opts.map((opt, oi) => {
-                let cls = "w-full text-left px-4 py-2.5 rounded-lg border text-sm transition-colors ";
-                if (!ansSelected) cls += "border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300";
-                else if (oi === q.ans) cls += "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 font-bold shadow-sm";
-                else if (selected[qIdx] === oi) cls += "border-red-400 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400";
-                else cls += "border-slate-200 dark:border-slate-600 opacity-50 text-slate-500";
-                return <button key={oi} disabled={ansSelected} onClick={() => handleSelect(qIdx, oi)} className={cls}>{opt}</button>;
-              })}</div>
-              {ansSelected && (
-                <div className={`p-3 rounded-lg text-xs mt-2 border ${isCorrect?'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800/50 text-green-800 dark:text-green-300':'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800/50 text-red-800 dark:text-red-300'}`}>
-                  <span className="font-bold mr-2 text-[13px]">{isCorrect ? t.praise_msg[qIdx%3] : t.encourage_msg[qIdx%3]}</span>
-                  <span className="opacity-90">{t.explanation}：{q.exp}</span>
-                </div>
-              )}
-            </div>
-          );
-        })}
+    <div className="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 select-none shadow-sm md:col-span-2">
+      <h4 className="font-serif font-bold text-lg text-bcgGreen dark:text-bcgGold mb-2">{isZh?'價值網拖曳配置 (Value Net)':'Value Net Builder'}</h4>
+      <p className="text-xs text-slate-500 mb-6">{isZh?'將下方角色拖曳 (Drag & Drop) 至正確的空格中，完成價值網架構。':'Drag and drop roles into the correct slots to complete the Value Net architecture.'}</p>
+      <div className="min-h-[60px] p-4 mb-6 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 flex flex-wrap justify-center items-center gap-3" onDragOver={handleDragOver} onDrop={(e) => handleDrop(e, 'pool')}>
+        <span className="text-xs font-bold text-slate-400 w-full text-center block mb-2">{isZh?'待分配區 (Pool)':'Draggable Roles'}</span>
+        {pool.map(item => (<div key={item} draggable onDragStart={(e) => handleDragStart(e, item, 'pool')} className="cursor-move px-4 py-2 bg-bcgGold text-bcgGreen text-sm font-bold rounded shadow hover:scale-105 transition-transform">{labels[item]}</div>))}
       </div>
-      <div className="flex justify-between items-center mt-6 border-t border-slate-100 dark:border-slate-800 pt-4 select-none">
-        <span className="text-xs text-slate-500">Page {page+1} of {totalPages}</span>
-        <div className="flex gap-3">
-          <button onClick={() => { setSelected({}); setPage(0); }} className="px-4 py-2 text-xs font-bold border border-bcgGreen dark:border-bcgGold text-bcgGreen dark:text-bcgGold rounded-lg hover:bg-bcgGreen/10 transition-colors">{t.retry}</button>
-          <button onClick={handleNext} className="px-4 py-2 text-xs font-bold bg-bcgGreen dark:bg-bcgGold text-white dark:text-bcgGreen rounded-lg hover:bg-[#002b20] transition-colors shadow-sm">{t.next}</button>
+      <div className="relative w-full max-w-sm h-64 mx-auto select-none my-8">
+        <div className="absolute inset-0 flex flex-col items-center justify-between z-10">
+          {renderSlot('top', isZh?'拖曳至此 (上)':'Drop (Top)')}
+          <div className="w-full flex justify-between items-center px-0">
+             {renderSlot('left', isZh?'拖曳至此 (左)':'Drop (Left)')}
+             <div className="w-20 h-20 bg-bcgGreen text-bcgGold rounded-full flex flex-col items-center justify-center font-black shadow-lg"><span className="text-xs">FIRM</span><span className="text-[10px] opacity-80">(本企業)</span></div>
+             {renderSlot('right', isZh?'拖曳至此 (右)':'Drop (Right)')}
+          </div>
+          {renderSlot('bottom', isZh?'拖曳至此 (下)':'Drop (Bottom)')}
         </div>
+        <svg className="absolute inset-0 pointer-events-none z-0" width="100%" height="100%"><line x1="50%" y1="20%" x2="50%" y2="80%" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" strokeDasharray="4"/><line x1="20%" y1="50%" x2="80%" y2="50%" stroke="currentColor" className="text-slate-300 dark:text-slate-600" strokeWidth="2" strokeDasharray="4"/></svg>
+      </div>
+      <div className="text-center mt-8">
+        {isWin ? <p className="text-green-600 dark:text-green-400 font-bold text-sm mb-3">🎉 {isZh?'價值網架構完成！':'Value Net Complete!'}</p> : <p className="h-6 mb-3"></p>}
+        <button onClick={handleReset} className="px-6 py-2 text-xs font-bold border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-sm">{isZh?'重置畫布 (Reset)':'Reset Canvas'}</button>
       </div>
     </div>
   );
@@ -777,7 +858,7 @@ function App() {
   const t = dict[lang];
   const timerRef = useRef(null);
 
-  // Menu List with original elegant icons
+  // Menu List with original elegant icons (applied to sidebar and dropdown)
   const modulesList = [
     {id:0, icon:<IconHome size={16}/>, title:t.m0_nav},
     {id:1, icon:<IconLayers size={16}/>, title:t.m1_nav},
@@ -906,8 +987,8 @@ function App() {
           <p className="text-sm">{t.m0_why_desc}</p>
         </div>
         
-        {/* SVG Reduced to ~2/3 size with adjusted readability inside component */}
-        <div className="w-full sm:w-2/3 max-w-xl mx-auto p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm select-none">
+        {/* SVG Reduced to ~2/3 size with mathematically adjusted inner coordinates for perfect readability */}
+        <div className="w-full sm:w-2/3 max-w-lg mx-auto p-5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm select-none">
            <SvgHome lang={lang} />
         </div>
 
@@ -918,14 +999,17 @@ function App() {
           </div>
         ))}</div>
 
-        {/* M0 Bottom Module Navigation Blocks Restored */}
-        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 select-none">
-          <h3 className="text-lg font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4 flex items-center gap-2"><IconLayers size={20}/> {lang==='zh'?'課程模組':'Course Modules'}</h3>
-          <div className="space-y-3">{t.m0_modules.map((m,i)=>(
-            <button key={i} onClick={()=>{setModule(i+1); window.scrollTo({top:0});}} className="w-full flex items-center gap-5 bg-white dark:bg-slate-800 rounded-xl px-6 py-4 border border-slate-200 dark:border-slate-700 hover:border-bcgGreen dark:hover:border-bcgGold hover:shadow-md transition-all text-left group">
-              <div className="text-3xl font-black font-serif text-bcgGold w-10 shrink-0">{m.num}</div>
-              <div className="flex-1"><div className="font-bold font-serif text-bcgGreen dark:text-bcgGold mb-1">{m.title}</div><div className="text-sm text-slate-500 dark:text-slate-400">{m.desc}</div></div>
-              <IconChevronRight size={20} className="text-slate-300 dark:text-slate-600 group-hover:text-bcgGreen dark:group-hover:text-bcgGold shrink-0"/>
+        {/* M0 Bottom Module Navigation Blocks Restored with directly clickable interface */}
+        <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-700 select-none">
+          <h3 className="text-lg font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4 flex items-center gap-2"><IconLayers size={20}/> {lang==='zh'?'課程模組清單':'Course Modules'}</h3>
+          <div className="grid md:grid-cols-2 gap-4">{t.m0_modules.map((m,i)=>(
+            <button key={i} onClick={()=>{setModule(i+1); window.scrollTo({top:0});}} className="w-full flex flex-col justify-start items-start bg-white dark:bg-slate-800 rounded-xl px-6 py-5 border border-slate-200 dark:border-slate-700 hover:border-bcgGreen dark:hover:border-bcgGold hover:shadow-md transition-all text-left group">
+              <div className="flex w-full items-center justify-between mb-3">
+                 <div className="text-2xl font-black font-serif text-bcgGold shrink-0">{m.num}</div>
+                 <IconChevronRight size={18} className="text-slate-300 dark:text-slate-600 group-hover:text-bcgGreen dark:group-hover:text-bcgGold shrink-0"/>
+              </div>
+              <div className="font-bold font-serif text-base text-bcgGreen dark:text-bcgGold mb-2">{m.title}</div>
+              <div className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">{m.desc}</div>
             </button>
           ))}</div>
         </div>
@@ -965,9 +1049,9 @@ function App() {
              <CardDeck cards={t[`${mk}_terms`]} t={t} onCardRead={(r,tot)=>handleCardRead(module,r,tot)} />
           </div>
 
-          {/* SVG Moved to above Wrap-up */}
-          <div className="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm select-none">
-            <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-2"><IconTarget size={16}/> {lang==='zh'?'模組架構圖':'Module Architecture'}</h3>
+          {/* SVG Moved to above Wrap-up. Scaled to exactly 1/2 size with doubled text size for readability */}
+          <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm select-none">
+            <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6 flex items-center gap-2 justify-center"><IconTarget size={16}/> {lang==='zh'?'模組架構圖':'Module Architecture'}</h3>
             {svgs[module-1]}
           </div>
 
@@ -1021,17 +1105,18 @@ function App() {
       );
     }
     
-    // ==== 互動實驗室 (Module 7) 原貌恢復 4個互動模型 ====
+    // ==== 互動實驗室 (Module 7) 原貌恢復 4個互動模型 + 價值網 ====
     if (module === 7) return (
       <div className={`space-y-8 ${fade}`}>
         <H2>{t.mlab_title}</H2>
         <p className="text-slate-500 dark:text-slate-400 select-none">{t.mlab_desc}</p>
-        <FiveForcesPlusLab lang={lang}/>
         <div className="grid md:grid-cols-2 gap-6">
+          <FiveForcesPlusLab lang={lang}/>
+          <LifecycleLab lang={lang}/>
           <PrisonersDilemmaLab lang={lang}/>
           <AMCLab lang={lang}/>
+          <ValueNetLab lang={lang} />
         </div>
-        <LifecycleLab lang={lang}/>
         {renderNavBottom()}
       </div>
     );
@@ -1135,7 +1220,7 @@ function App() {
           <div className="flex items-center space-x-1 sm:space-x-2">
             {/* 新增的 Home 鍵 */}
             <button onClick={()=>{setModule(0); window.scrollTo({top:0,behavior:'smooth'});}} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-full transition-colors mr-1" title="Home">
-              <IconHome size={16}/>
+              <IconHome size={18}/>
             </button>
             <div className="flex bg-white/10 rounded-full p-1 mr-1 sm:mr-2">
               <button onClick={()=>handleTTS('play')} className="p-1.5 rounded-full hover:bg-white/20"><IconPlay size={14}/></button>
@@ -1143,9 +1228,9 @@ function App() {
               <button onClick={()=>handleTTS('stop')} className="p-1.5 rounded-full hover:bg-white/20"><IconSquare size={14}/></button>
             </div>
             <button onClick={()=>setLang(lang==='zh'?'en':'zh')} className="px-3 py-1 text-xs font-bold bg-white/10 hover:bg-white/20 rounded-full mr-1 sm:mr-2">{lang==='zh'?'EN':'中文'}</button>
-            {/* 深淺背景切換：已移至最右邊 */}
-            <button onClick={()=>setIsDark(!isDark)} className="flex items-center justify-center p-1.5 sm:p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-               {isDark ? <IconSun size={16} /> : <IconMoon size={16} />}
+            {/* 深淺背景切換：已確實移至最右邊 */}
+            <button onClick={()=>setIsDark(!isDark)} className="flex items-center justify-center p-1.5 sm:p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors ml-2">
+               {isDark ? <IconSun size={18} /> : <IconMoon size={18} />}
             </button>
           </div>
         </div>
